@@ -10,9 +10,11 @@ angular
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                                                             $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/todo');
     $stateProvider
       .state('todo', {
-        url: '',
+        url: '/todo',
         templateUrl: 'views/todo.html',
         controller: 'TodoController'
       })
@@ -22,5 +24,5 @@ angular
         controller: 'CategoryController'
     })
 
-    $urlRouterProvider.otherwise('todo');
+
   }]);

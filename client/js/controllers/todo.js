@@ -40,7 +40,7 @@ angular
         .then(function(todo) {
           $scope.editedTodo = null;
           $scope.category = null;
-          $scope.todoForm.content.$setPristine();
+          //$scope.todoForm.content.$setPristine();
           $('.focus').focus();
           getTodos();
         });

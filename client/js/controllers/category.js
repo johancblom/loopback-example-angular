@@ -20,17 +20,28 @@ angular
 
     $scope.addCategory = function() {
       Category
-        .create($scope.newCategory)
+        .create($scope.editedCategory)
         .$promise
         .then(function(category) {
-          $scope.newCategory = {};
+          $scope.editedCategory = null;
           //$scope.categoryForm.content.$setPristine();
           $('.focus').focus();
           getCategories();
         });
     };
 
-    $scope.removeCCategory = function(item) {
+    $scope.updateCategory = function(category) {
+      Category.upsert(category)
+        .$promise
+        .then(function(category) {
+          $scope.editedCategory = null;
+          $('.focus').focus();
+          getCategories();
+        })
+
+    }
+
+    $scope.removeCategory = function(item) {
       Category
         .deleteById(item)
         .$promise
@@ -38,4 +49,10 @@ angular
           getCategories();
         });
     };
+
+    $scope.startEdit = function (category) {
+      console.log("startEdit: category is: " + category.name);
+      $scope.editedCategory = category;
+    }
+
   }]);

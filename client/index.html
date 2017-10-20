@@ -7,7 +7,7 @@
   <title>LoopBack Angular example</title>
 
   <!-- Bootstrap -->
-  <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -18,17 +18,16 @@
   <![endif]-->
 </head>
 <body ng-app="app">
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" ui-sref="todo">Todos</a>
-      <a class="navbar-brand" ui-sref="category">Categories</a>
-
-    </div>
-  </div>
+<div class="navbar" role="navigation">
+      <div class="navbar-inner">
+        <ul class="nav">
+            <li ui-sref-active="active"><a ui-sref="todo">Todos</a></li>
+            <li ui-sref-active="active"><a ui-sref="category">Categories</a></li>
+        </ul>
+      </div>
 </div>
 
-<div class="container" ng-controller="TodoController">
+<div class="container">
   <div ui-view></div>
 </div>
 
