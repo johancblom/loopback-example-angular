@@ -24,7 +24,7 @@ angular
         .$promise
         .then(function(category) {
           $scope.newCategory = {};
-          $scope.categoryForm.content.$setPristine();
+          //$scope.categoryForm.content.$setPristine();
           $('.focus').focus();
           getCategories();
         });

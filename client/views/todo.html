@@ -2,9 +2,6 @@
   <div class="col-sm-10">
 <h1>Todo list</h1>
   </div>
-  <div class="col-sm-2">
-    <h1>Category list</h1>
-  </div>
 <hr>
 
 <div class="row">
@@ -75,29 +72,6 @@
       </table>
     </div>
 
-<div class="col-sm-2">
-<form name="categoryForm" novalidate ng-submit="addCategory()">
-  <div class="form-group"
-       ng-class="{'has-error': categoryForm.content.$invalid
-        && categoryForm.content.$dirty}">
-    <input type="text" class="form-control focus" name="name"
-           placeholder="Category" autocomplete="off" required
-           ng-model="newCategory.name">
-    <span class="has-error control-label" ng-show="
-        categoryForm.content.$invalid && categoryForm.content.$dirty">
-      Content is required.
-    </span>
-  </div>
-  <button class="btn btn-default" ng-disabled="categoryForm.$invalid">Add</button>
-</form>
-<hr>
-<div class="list-inline">
-  <span class="list-inline-item">
-  <span  ng-repeat="category in categories">{{category.name}}&nbsp;
-    <i class="glyphicon glyphicon-remove"
-       ng-click="removeCategory(category)"></i></span>
-    </span>
-</div>
-  </div>
+
 </div>
 
