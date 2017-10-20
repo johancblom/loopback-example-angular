@@ -1,0 +1,22 @@
+<h1>Category list</h1>
+<hr>
+<form name="categoryForm" novalidate ng-submit="addCategory()">
+  <div class="form-group"
+       ng-class="{'has-error': categoryForm.content.$invalid
+        && categoryForm.content.$dirty}">
+    <input type="text" class="form-control focus" name="content"
+           placeholder="Content" autocomplete="off" required
+           ng-model="newCategory.content">
+    <span class="has-error control-label" ng-show="
+        categoryForm.content.$invalid && categoryForm.content.$dirty">
+      Content is required.
+    </span>
+  </div>
+  <button class="btn btn-default" ng-disabled="categoryForm.$invalid">Add</button>
+</form>
+<hr>
+<div class="list-group">
+  <a class="list-group-item" ng-repeat="category in categories">{{category.content}}&nbsp;
+    <i class="glyphicon glyphicon-remove pull-right"
+       ng-click="removeCategory(category)"></i></a>
+</div>
