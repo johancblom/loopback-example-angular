@@ -5,24 +5,25 @@
 
 angular
   .module('app')
-  .controller('CategoryController', ['$scope', '$state', 'Category', function($scope,
-                                                                      $state, Category) {
+  .controller('CategoryController', ['$scope', '$state', 'Category', 'Todo', function($scope,
+                                                                      $state, Category, Todo) {
     $scope.categories = [];
     function getCategories() {
       Category
         .find()
         .$promise
-        .then(function(results) {
+        .then(function (results) {
           $scope.categories = results;
         });
     }
+
     getCategories();
 
-    $scope.addCategory = function() {
+    $scope.addCategory = function () {
       Category
         .create($scope.editedCategory)
         .$promise
-        .then(function(category) {
+        .then(function (category) {
           $scope.editedCategory = null;
           //$scope.categoryForm.content.$setPristine();
           $('.focus').focus();
@@ -30,10 +31,10 @@ angular
         });
     };
 
-    $scope.updateCategory = function(category) {
+    $scope.updateCategory = function (category) {
       Category.upsert(category)
         .$promise
-        .then(function(category) {
+        .then(function (category) {
           $scope.editedCategory = null;
           $('.focus').focus();
           getCategories();
@@ -41,18 +42,24 @@ angular
 
     }
 
-    $scope.removeCategory = function(item) {
-      Category
-        .deleteById(item)
+    $scope.removeCategory = function (item) {
+      Todo.findOne({filter: {'where': {'categoryId': item.id}}})
         .$promise
-        .then(function() {
-          getCategories();
+        .then(function () {
+          alert('found an existing todo in that category, you can\'t delete it');
+        }, function () {
+          Category
+            .deleteById(item)
+            .$promise
+            .then(function () {
+              getCategories();
+            });
         });
     };
 
     $scope.startEdit = function (category) {
       console.log("startEdit: category is: " + category.name);
       $scope.editedCategory = category;
-    }
-
+    };
+    
   }]);

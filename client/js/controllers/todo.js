@@ -64,8 +64,7 @@ angular
         });
       $scope.editedTodo = null;
       $scope.category = null;
-    }
-
+    };
 
     $scope.startEdit = function (todo) {
       console.log("startEdit: todo is: " + todo.category.name);
