@@ -80,7 +80,14 @@ angular
 
     $scope.inputChanged = function() {
       console.log('detected input change');
-      $scope.categoryForm.name.$setValidity('duplicate', true);
+      Category.findOne(({filter: {'where': {'name': $scope.editedCategory.name}}}))
+        .$promise
+        .then(function() {
+            $scope.categoryForm.name.$setValidity('duplicate', false);
+          },
+          function() {
+            $scope.categoryForm.name.$setValidity('duplicate', true);
+          });
     }
 
   }]);

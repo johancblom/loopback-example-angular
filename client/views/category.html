@@ -22,7 +22,7 @@
           </td>
         </tr>
         <tr ng-class="{danger: editedCategory}">
-          <td><input ng-model="editedCategory.name" name="name" required ng-change="inputChanged()" ng-model-options="{debounce: 1000}"/>
+          <td><input ng-model="editedCategory.name" name="name" required ng-change="inputChanged()" ng-model-options="{debounce: 500}"/>
             <span ng-messages="categoryForm.name.$error" ng-if="categoryForm.name.$dirty">
               <span ng-message="required">
                 Please supply a name
@@ -54,8 +54,3 @@
     </div>
   </div>
 </form>
-<div>Touched: {{categoryForm.name.$touched}}</div>
-<div>Dirty: {{categoryForm.name.$dirty}}</div>
-<div>Error: {{categoryForm.name.$error}}</div>
-<div>Form Invalid: {{categoryForm.$invalid}}</div>
-<div>Form dirty: {{categoryForm.$dirty}}</div>

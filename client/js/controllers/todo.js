@@ -72,42 +72,42 @@ angular
       $scope.category = todo.category;
     }
 
-    $scope.categories = [];
-    function getCategories() {
-      Category
-        .find()
-        .$promise
-        .then(function(results) {
-          console.log(results);
-          $scope.categories = results;
-        });
-    }
+    // $scope.categories = [];
+    // function getCategories() {
+    //   Category
+    //     .find()
+    //     .$promise
+    //     .then(function(results) {
+    //       console.log(results);
+    //       $scope.categories = results;
+    //     });
+    // }
 
     $scope.cancelEdit = function() {
-      $scope.editedTodo = {};
+      $scope.editedTodo = null;
       $scope.category = null;
     };
 
-    getCategories();
-
-    $scope.addCategory = function() {
-      Category
-        .create($scope.newCategory)
-        .$promise
-        .then(function(category) {
-          $scope.newCategory = {};
-          //$scope.categoryForm.content.$setPristine();
-          $('.focus').focus();
-          getCategories();
-        });
-    };
-
-    $scope.removeCategory = function(item) {
-      Category
-        .deleteById(item)
-        .$promise
-        .then(function() {
-          getCategories();
-        });
-    };
+    // getCategories();
+    //
+    // $scope.addCategory = function() {
+    //   Category
+    //     .create($scope.newCategory)
+    //     .$promise
+    //     .then(function(category) {
+    //       $scope.newCategory = {};
+    //       //$scope.categoryForm.content.$setPristine();
+    //       $('.focus').focus();
+    //       getCategories();
+    //     });
+    // };
+    //
+    // $scope.removeCategory = function(item) {
+    //   Category
+    //     .deleteById(item)
+    //     .$promise
+    //     .then(function() {
+    //       getCategories();
+    //     });
+    //};
   }]);
