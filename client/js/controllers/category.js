@@ -20,15 +20,22 @@ angular
     getCategories();
 
     $scope.addCategory = function () {
-      Category
-        .create($scope.editedCategory)
+      Category.findOne(({filter: {'where': {'name': $scope.editedCategory.name}}}))
         .$promise
-        .then(function (category) {
-          $scope.editedCategory = null;
-          //$scope.categoryForm.content.$setPristine();
-          $('.focus').focus();
-          getCategories();
-        });
+        .then(function() {
+          alert('Category already exists, so not adding');
+        },
+          function() {
+            Category
+              .create($scope.editedCategory)
+              .$promise
+              .then(function (category) {
+                $scope.editedCategory = null;
+                //$scope.categoryForm.content.$setPristine();
+                $('.focus').focus();
+                getCategories();
+              });
+          })
     };
 
     $scope.updateCategory = function (category) {
@@ -61,5 +68,5 @@ angular
       console.log("startEdit: category is: " + category.name);
       $scope.editedCategory = category;
     };
-    
+
   }]);
