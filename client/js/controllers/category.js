@@ -23,7 +23,8 @@ angular
       Category.findOne(({filter: {'where': {'name': $scope.editedCategory.name}}}))
         .$promise
         .then(function() {
-          alert('Category already exists, so not adding');
+          $scope.categoryForm.name.$setValidity('duplicate', false);
+//          $scope.editedCategory = null;
         },
           function() {
             Category
@@ -34,6 +35,7 @@ angular
                 //$scope.categoryForm.content.$setPristine();
                 $('.focus').focus();
                 getCategories();
+                $scope.categoryForm.name.$setPristine();
               });
           })
     };
@@ -45,6 +47,8 @@ angular
           $scope.editedCategory = null;
           $('.focus').focus();
           getCategories();
+          $scope.categoryForm.name.$setPristine();
+
         })
 
     }
@@ -68,5 +72,15 @@ angular
       console.log("startEdit: category is: " + category.name);
       $scope.editedCategory = category;
     };
+
+    $scope.cancelEdit = function () {
+      $scope.editedCategory = null;
+      $scope.categoryForm.name.$setPristine();
+    }
+
+    $scope.inputChanged = function() {
+      console.log('detected input change');
+      $scope.categoryForm.name.$setValidity('duplicate', true);
+    }
 
   }]);

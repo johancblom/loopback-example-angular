@@ -1,4 +1,4 @@
-<div>
+<form novalidate>
   <div class="row">
     <div class="col-sm-10">
       <h1>Todo list</h1>
@@ -24,7 +24,7 @@
           </td>
         </tr>
         <tr ng-class="{danger: editedTodo}">
-          <td><input ng-model="editedTodo.content" required/></td>
+          <td><input ng-model="editedTodo.content" name="content" required/></td>
           <td><select ng-model="category"
                       ng-options="category as category.name for category in categories track by category.id" required/>
           </td>
@@ -50,4 +50,4 @@
 
 
   </div>
-</div>
+</form>
