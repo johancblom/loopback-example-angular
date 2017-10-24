@@ -72,23 +72,23 @@ angular
       $scope.category = todo.category;
     }
 
-    // $scope.categories = [];
-    // function getCategories() {
-    //   Category
-    //     .find()
-    //     .$promise
-    //     .then(function(results) {
-    //       console.log(results);
-    //       $scope.categories = results;
-    //     });
-    // }
+    $scope.categories = [];
+    function getCategories() {
+      Category
+        .find()
+        .$promise
+        .then(function(results) {
+          console.log("Category results: " + results);
+          $scope.categories = results;
+        });
+    }
 
     $scope.cancelEdit = function() {
       $scope.editedTodo = null;
       $scope.category = null;
     };
 
-    // getCategories();
+    getCategories();
     //
     // $scope.addCategory = function() {
     //   Category
