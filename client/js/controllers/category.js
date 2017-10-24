@@ -5,17 +5,14 @@
 
 angular
   .module('app')
-  .controller('CategoryController', ['$scope', '$state', 'Category', 'Todo', function($scope,
-                                                                      $state, Category, Todo) {
-    $scope.categories = [];
-    function getCategories() {
-      Category
-        .find()
-        .$promise
-        .then(function (results) {
-          $scope.categories = results;
-        });
-    }
+  .controller('CategoryController', ['$scope', '$state', 'Category', 'Todo', 'Categories', function($scope,
+                                                                      $state, Category, Todo, Categories) {
+
+    var getCategories = function() {
+      Categories.getCategories().then(function (results) {
+        $scope.categories = results;
+      });
+    };
 
     getCategories();
 

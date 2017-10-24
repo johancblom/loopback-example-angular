@@ -5,8 +5,8 @@
 
 angular
   .module('app')
-  .controller('TodoController', ['$scope', '$state', 'Todo', 'Category', function($scope,
-                                                                      $state, Todo, Category) {
+  .controller('TodoController', ['$scope', '$state', 'Todo', 'Category', 'Categories', function($scope,
+                                                                      $state, Todo, Category, Categories) {
     $scope.todos = [];
     function getTodos() {
       Todo
@@ -72,42 +72,15 @@ angular
       $scope.category = todo.category;
     }
 
-    $scope.categories = [];
-    function getCategories() {
-      Category
-        .find()
-        .$promise
-        .then(function(results) {
-          console.log("Category results: " + results);
-          $scope.categories = results;
-        });
-    }
+    Categories.getCategories().then(function (results) {
+      $scope.categories = results;
+    });
+
 
     $scope.cancelEdit = function() {
       $scope.editedTodo = null;
       $scope.category = null;
     };
 
-    getCategories();
-    //
-    // $scope.addCategory = function() {
-    //   Category
-    //     .create($scope.newCategory)
-    //     .$promise
-    //     .then(function(category) {
-    //       $scope.newCategory = {};
-    //       //$scope.categoryForm.content.$setPristine();
-    //       $('.focus').focus();
-    //       getCategories();
-    //     });
-    // };
-    //
-    // $scope.removeCategory = function(item) {
-    //   Category
-    //     .deleteById(item)
-    //     .$promise
-    //     .then(function() {
-    //       getCategories();
-    //     });
-    //};
+
   }]);
