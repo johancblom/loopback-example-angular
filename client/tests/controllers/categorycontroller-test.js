@@ -10,10 +10,8 @@ describe('category controller tests', function(){
       queryDeferred = $q.defer();
       return queryDeferred.promise;
     }};
-    categoryMock = {findOne : function () {
-      findOneDeferred = $q.defer();
-      console.log(findOneDeferred);
-      return findOneDeferred;
+    categoryMock = {findOne : function (a, b, c) {
+      return b();
     }};
     controller = $controller('CategoryController', {
       $scope: scope,
@@ -57,15 +55,14 @@ describe('category controller tests', function(){
 
 
     scope.editedCategory = {name: 'abc'};
-    scope.categoryForm = {name: {}};
+    scope.categoryForm = {name: {$setValidity: function() {}}};
     scope.$apply();
 
     scope.addCategory();
 
-    findOneDeferred.resolve({a:'b'});
     scope.$apply();
 
-    expect(scope.categoryForm.name.$getValidity).to.be.false;
+    expect(scope.categoryForm.name.$setValidity).to.be.called;
   })
 });
 

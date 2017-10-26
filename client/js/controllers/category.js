@@ -22,24 +22,22 @@ angular
     $scope.getCategories();
 
     $scope.addCategory = function () {
-      Category.findOne(({filter: {'where': {'name': $scope.editedCategory.name}}}))
-        .$promise
-        .then(function() {
+      Category.findOne(({filter: {'where': {'name': $scope.editedCategory.name}}}),
+        function() {
           $scope.categoryForm.name.$setValidity('duplicate', false);
-//          $scope.editedCategory = null;
         },
-          function() {
-            Category
-              .create($scope.editedCategory)
-              .$promise
-              .then(function (category) {
-                $scope.editedCategory = null;
-                //$scope.categoryForm.content.$setPristine();
-                $('.focus').focus();
-                $scope.getCategories();
-                $scope.categoryForm.name.$setPristine();
-              });
-          })
+        function() {
+          Category
+            .create($scope.editedCategory)
+            .$promise
+            .then(function (category) {
+              $scope.editedCategory = null;
+              //$scope.categoryForm.content.$setPristine();
+              $('.focus').focus();
+              $scope.getCategories();
+              $scope.categoryForm.name.$setPristine();
+            });
+        })
     };
 
     $scope.updateCategory = function (category) {
