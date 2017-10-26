@@ -8,13 +8,18 @@ angular
   .controller('CategoryController', ['$scope', '$state', 'Category', 'Todo', 'Categories', function($scope,
                                                                       $state, Category, Todo, Categories) {
 
-    var getCategories = function() {
-      Categories.getCategories().then(function (results) {
-        $scope.categories = results;
-      });
+    $scope.categories = [];
+
+    var onSuccess = function(results) {
+      console.log('results' + results);
+      $scope.categories = results;
+    }
+
+    $scope.getCategories = function() {
+      Categories.getCategories().then(onSuccess);
     };
 
-    getCategories();
+    $scope.getCategories();
 
     $scope.addCategory = function () {
       Category.findOne(({filter: {'where': {'name': $scope.editedCategory.name}}}))
@@ -31,7 +36,7 @@ angular
                 $scope.editedCategory = null;
                 //$scope.categoryForm.content.$setPristine();
                 $('.focus').focus();
-                getCategories();
+                $scope.getCategories();
                 $scope.categoryForm.name.$setPristine();
               });
           })
@@ -43,7 +48,7 @@ angular
         .then(function (category) {
           $scope.editedCategory = null;
           $('.focus').focus();
-          getCategories();
+          $scope.getCategories();
           $scope.categoryForm.name.$setPristine();
 
         })
@@ -60,7 +65,7 @@ angular
             .deleteById(item)
             .$promise
             .then(function () {
-              getCategories();
+              $scope.getCategories();
             });
         });
     };
