@@ -21,23 +21,33 @@ angular
 
     $scope.getCategories();
 
-    $scope.addCategory = function () {
+    function categoryExists(){
+          return function() {
+            console.log("setting validity");
+            $scope.categoryForm.name.$setValidity('duplicate', false);
+          };
+    }
+
+    function createCategory(){
+      return function() {
+        Category
+          .create($scope.editedCategory)
+          .$promise
+          .then(function (category) {
+            $scope.editedCategory = null;
+            //$scope.categoryForm.content.$setPristine();
+            $('.focus').focus();
+            $scope.getCategories();
+            $scope.categoryForm.name.$setPristine();
+                  });
+      }
+    }
+
+      $scope.addCategory = function () {
       Category.findOne(({filter: {'where': {'name': $scope.editedCategory.name}}}),
-        function() {
-          $scope.categoryForm.name.$setValidity('duplicate', false);
-        },
-        function() {
-          Category
-            .create($scope.editedCategory)
-            .$promise
-            .then(function (category) {
-              $scope.editedCategory = null;
-              //$scope.categoryForm.content.$setPristine();
-              $('.focus').focus();
-              $scope.getCategories();
-              $scope.categoryForm.name.$setPristine();
-            });
-        })
+        categoryExists(),
+        createCategory()
+      )
     };
 
     $scope.updateCategory = function (category) {
