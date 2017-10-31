@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Wed Oct 25 2017 11:08:32 GMT+0100 (GMT Daylight Time)
+// Generated on Tue Oct 31 2017 10:01:09 GMT+0000 (GMT Standard Time)
 
 module.exports = function(config) {
   config.set({
@@ -10,19 +10,19 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      './client/vendor/angular/angular.js',
-      './client/vendor/angular-messages/angular-messages.js',
-      './client/vendor/angular-ui-router/release/angular-ui-router.js',
-      './client/vendor/angular-resource/angular-resource.js',
-      './client/vendor/angular-mocks/angular-mocks.js',
-      './client/js/**/*.js',
-      './client/tests/**/*.js'
-
+      'client/vendor/angular/angular.js',
+      'client/vendor/angular-mocks/angular-mocks.js',
+      'client/vendor/angular-resource/angular-resource.js',
+      'client/vendor/angular-ui-router/release/angular-ui-router.js',
+      'client/vendor/angular-messages/angular-messages.js',
+      'client/vendor/jquery/dist/jquery.js',
+      'client/js/**/*.js',
+      'client/tests/**/*.js'
     ],
 
 
@@ -30,17 +30,11 @@ module.exports = function(config) {
     exclude: [
     ],
 
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-coverage',
-      require('karma-mocha'),
-      require('karma-chai')
-    ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      './client/js/**/*.js':'coverage'
+      'client/js/**/*.js': ['coverage']
     },
 
 

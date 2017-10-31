@@ -21,12 +21,13 @@ angular
 
     $scope.getCategories();
 
-    function categoryExists(){
-          return function() {
-            console.log("setting validity");
-            $scope.categoryForm.name.$setValidity('duplicate', false);
-          };
+    function categoryExists() {
+      return function() {
+        $scope.categoryForm.name.$setValidity('duplicate', false);
+      }
     }
+
+    $scope.categoryExists = categoryExists();
 
     function createCategory(){
       return function() {
@@ -42,6 +43,8 @@ angular
                   });
       }
     }
+
+    $scope.createCategory = createCategory();
 
       $scope.addCategory = function () {
       Category.findOne(({filter: {'where': {'name': $scope.editedCategory.name}}}),
@@ -99,5 +102,4 @@ angular
             $scope.categoryForm.name.$setValidity('duplicate', true);
           });
     }
-
   }]);
