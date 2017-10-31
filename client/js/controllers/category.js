@@ -54,24 +54,26 @@ angular
     };
 
     $scope.updateCategory = function (category) {
-      Category.upsert(category)
-        .$promise
-        .then(function (category) {
-          $scope.editedCategory = null;
-          $('.focus').focus();
-          $scope.getCategories();
-          $scope.categoryForm.name.$setPristine();
+        Category.upsert(category)
+          .$promise
+          .then(function (category) {
+            console.log('in update');
+            $scope.editedCategory = null;
+            $('.focus').focus();
+            $scope.getCategories();
+            $scope.categoryForm.name.$setPristine();
 
-        })
-
+          })
     }
 
     $scope.removeCategory = function (item) {
       Todo.findOne({filter: {'where': {'categoryId': item.id}}})
         .$promise
         .then(function () {
+          console.log('found an existing todo');
           alert('found an existing todo in that category, you can\'t delete it');
         }, function () {
+          console.log('did not find an existing todo');
           Category
             .deleteById(item)
             .$promise
