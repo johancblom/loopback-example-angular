@@ -11,7 +11,7 @@
           <th></th>
         </tr>
         <tr ng-repeat="item in categories" ng-hide="item.id == editedCategory.id">
-          <td>{{item.name}}</td>
+          <td class="name">{{item.name}}</td>
           <td>
             <button ng-click="startEdit(item)" class="btn btn-xs btn-primary">
               Edit
