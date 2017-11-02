@@ -10,7 +10,7 @@ beforeAll(function(done) {
 
 describe('category page', function() {
   it('should allow you to add a category', function() {
-    browser.get('http://localhost:3000/#!/category');
+    browser.get('http://localhost:4000/#!/category');
 
     var randomNumber = getRandomNum(0,1000);
     element(by.model('editedCategory.name')).sendKeys('category ' + randomNumber);
@@ -25,7 +25,7 @@ describe('category page', function() {
 
   it('should allow you to update a category', function() {
     var btnElement, txtElement, txtElementText;
-    browser.get('http://localhost:3000/#!/category');
+    browser.get('http://localhost:4000/#!/category');
     element.all(by.repeater('item in categories')).then(function(items) {
       btnElement = items[0].element(by.buttonText('Edit'));
       txtElement = items[0].element(by.className('name'));
@@ -41,7 +41,7 @@ describe('category page', function() {
 
     it('should allow you to remove a category', function() {
       var btnElement, txtElement, txtElementText;
-      browser.get('http://localhost:3000/#!/category');
+      browser.get('http://localhost:4000/#!/category');
       element.all(by.repeater('item in categories')).then(function(items) {
         btnElement = items[0].element(by.buttonText('Delete'));
         txtElement = items[0].element(by.className('name ng-binding'));
