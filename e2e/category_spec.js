@@ -52,7 +52,6 @@ describe('category page', function() {
         })
       }).then(function() {
         var createBtn = element(by.buttonText('Create'));
-        browser.sleep(10);
         expect(createBtn.isEnabled()).toBe(false);
       });
     })
