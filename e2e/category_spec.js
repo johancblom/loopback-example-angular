@@ -8,9 +8,12 @@ beforeAll(function(done) {
   done();
 });
 
+beforeEach(function() {
+  browser.get('http://localhost:4000/#!/category');
+});
+
 describe('category page', function() {
   it('should allow you to add a category', function() {
-    browser.get('http://localhost:4000/#!/category');
 
     var randomNumber = getRandomNum(0,1000);
     element(by.model('editedCategory.name')).sendKeys('category ' + randomNumber);
@@ -25,7 +28,6 @@ describe('category page', function() {
 
   it('should allow you to update a category', function() {
     var btnElement, txtElement, txtElementText;
-    browser.get('http://localhost:4000/#!/category');
     element.all(by.repeater('item in categories')).then(function (items) {
       btnElement = items[0].element(by.buttonText('Edit'));
       txtElement = items[0].element(by.className('name'));
@@ -43,7 +45,7 @@ describe('category page', function() {
   it('should not allow you to add a category twice', function() {
     var txtElement, txtElementText;
     element.all(by.repeater('item in categories')).then(function (items) {
-      txtElement = items[1].element(by.className('name'));
+      txtElement = items[0].element(by.className('name'));
       txtElement.getText().then(function (text) {
         txtElementText = text;
       }).then(function () {
@@ -60,7 +62,6 @@ describe('category page', function() {
 
   it('should allow you to remove a category', function() {
     var btnElement, txtElement, txtElementText;
-    browser.get('http://localhost:4000/#!/category');
     element.all(by.repeater('item in categories')).then(function(items) {
       btnElement = items[0].element(by.buttonText('Delete'));
       txtElement = items[0].element(by.className('name ng-binding'));

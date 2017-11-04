@@ -1,10 +1,6 @@
 {
   "db": {
     "name": "db",
-    "host": "localhost",
-    "port": 27017,
-    "url":  "",
-    "database": "test_e2e",
-    "connector": "mongodb"
+    "connector": "memory"
   }
 }
