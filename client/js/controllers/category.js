@@ -5,8 +5,8 @@
 
 angular
   .module('app')
-  .controller('CategoryController', ['$scope', '$state', 'Category', 'Todo', 'Categories', function($scope,
-                                                                      $state, Category, Todo, Categories) {
+  .controller('CategoryController', ['$scope', '$state', 'Category', 'Todo', function($scope,
+                                                                      $state, Category, Todo) {
 
     $scope.categories = [];
 
@@ -16,7 +16,8 @@ angular
     }
 
     $scope.getCategories = function() {
-      Categories.getCategories().then(onSuccess);
+      //Categories.getCategories().then(onSuccess);
+      Category.find().$promise.then(onSuccess);
     };
 
     $scope.getCategories();

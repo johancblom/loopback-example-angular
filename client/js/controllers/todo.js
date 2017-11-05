@@ -5,8 +5,8 @@
 
 angular
   .module('app')
-  .controller('TodoController', ['$scope', '$state', 'Todo', 'Category', 'Categories', function($scope,
-                                                                      $state, Todo, Category, Categories) {
+  .controller('TodoController', ['$scope', '$state', 'Todo', 'Category', function($scope,
+                                                                      $state, Todo, Category) {
     $scope.todos = [];
     function getTodos() {
       Todo
@@ -72,7 +72,7 @@ angular
       $scope.category = todo.category;
     }
 
-    Categories.getCategories().then(function (results) {
+    Category.find().$promise.then(function (results) {
       $scope.categories = results;
     });
 
