@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Todos <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Categories</a></li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+  <div class="row">
+  <div class="col-sm-10">
+  <h1>Category list</h1>
+  </div>
+  <hr>
+  <div class="col-sm-12">
+  <table id="categoryTable" class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th class="col-sm-6">Category</th>
+      <th class="col-sm-6">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in categories" ng-hide="item.id == editedCategory.id">
+      <td class="name">{{item.name}}</td>
+      <td>
+        <button ng-click="startEdit(item)" class="btn btn-xs btn-primary">
+          Edit
+        </button>
+        <button ng-click="removeCategory(item)" class="btn btn-xs btn-primary">
+          Delete
+        </button>
+      </td>
+    </tr>
+    <tr ng-class="{danger: editedCategory}">
+      <td><input ng-model="editedCategory.name" name="name" required ng-change="inputChanged()" ng-model-options="{debounce: 500}"/>
+        <span ng-messages="categoryForm.name.$error" ng-if="categoryForm.name.$dirty">
+              <span ng-message="required">
+                Please supply a name
+              </span>
+              <span ng-message="duplicate">
+                This category is already in use
+              </span>
+            </span></td>
+      <td>
+        <button ng-hide="editedCategory.id"
+                ng-click="addCategory()"
+                ng-disabled="categoryForm.$invalid"
+                class="btn btn-xs btn-primary">
+          Create
+        </button>
+        <button ng-show="editedCategory.id"
+                ng-click="updateCategory(editedCategory)"
+                ng-disabled="categoryForm.$invalid && categoryForm.$dirty"
+                class="btn btn-xs btn-primary">
+          Save
+        </button>
+        <button ng-show="editedCategory"
+                ng-click="cancelEdit()" class="btn btn-xs btn-primary">
+          Cancel
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+</form>
+</div>
+</body>
+</html>
