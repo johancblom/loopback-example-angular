@@ -11,6 +11,10 @@ describe('category controller tests', function(){
       return queryDeferred.promise;
     }};
     categoryMock = {
+      find : function() {
+        findOneDeferred = $q.defer();
+        return {$promise: findOneDeferred.promise}
+      },
       findOne : function (a, b, c) {
         findOneDeferred = $q.defer();
         if(b) {
@@ -64,21 +68,13 @@ describe('category controller tests', function(){
   it('categories should be empty on create', function() {
     expect(scope.categories).toEqual([]);
   });
-  it('getCategories should interact with the service', function(done) {
-    categoryServiceMock.getCategories = function() {
-      queryDeferred = $q.defer();
-      done();
-      return queryDeferred.promise;
-    }
 
-    scope.getCategories();
-  });
 
   it('getCategories should create the correct categories from the service', function() {
 
     scope.getCategories();
 
-    queryDeferred.resolve(['a']);
+    findOneDeferred.resolve(['a']);
     scope.$apply();
 
     expect(scope.categories).toEqual(['a']);
