@@ -92,6 +92,7 @@ angular
     $scope.cancelEdit = function () {
       $scope.editedCategory = null;
       $scope.categoryForm.name.$setPristine();
+      $scope.getCategories();
     }
 
     $scope.inputChanged = function() {
