@@ -12,18 +12,43 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                                                             $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/todo');
+    $urlRouterProvider.otherwise('/login');
     $stateProvider
       .state('todo', {
         url: '/todo',
         templateUrl: 'views/todo.html',
-        controller: 'TodoController'
+        controller: 'TodoController',
+        authenticate: true
       })
       .state('category', {
         url: '/category',
         templateUrl: 'views/category.html',
-        controller: 'CategoryController'
-    })
+        controller: 'CategoryController',
+        authenticate: true
+      })
+      .state('forbidden', {
+        url: '/forbidden',
+        templateUrl: 'views/forbidden.html',
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'AuthLoginController'
+      })
+      .state('logout', {
+        url: '/logout',
+        controller: 'AuthLogoutController'
+      })
 
 
+  }])
+  .run(['$rootScope', '$state', function($rootScope, $state) {
+    $rootScope.$on('$stateChangeStart', function(event, next) {
+      // redirect to login page if not logged in
+      if (next.authenticate && !$rootScope.currentUser) {
+        event.preventDefault(); //prevent current page from loading
+        $state.go('forbidden');
+      }
+    });
   }]);
+

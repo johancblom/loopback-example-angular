@@ -61,6 +61,8 @@ angular
         .$promise
         .then(function() {
           getTodos();
+        }, function() {
+          getTodos();
         });
       $scope.editedTodo = null;
       $scope.category = null;
