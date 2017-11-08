@@ -1,5 +1,5 @@
 describe('category controller tests', function(){
-  var $rootScope, scope, controller, categoryServiceMock, categoryMock, todoMock, findOneDeferred, queryDeferred, createDeferred, upsertDeferred, todoDeferred, deleteDeferred
+  var $rootScope, scope, state, controller, categoryServiceMock, categoryMock, todoMock, findOneDeferred, queryDeferred, createDeferred, upsertDeferred, todoDeferred, deleteDeferred
 
   beforeEach(angular.mock.module('app'));
 
@@ -47,6 +47,7 @@ describe('category controller tests', function(){
 
     controller = $controller('CategoryController', {
       $scope: scope,
+      $state: state,
       Categories: categoryServiceMock,
       Category: categoryMock,
       Todo: todoMock
