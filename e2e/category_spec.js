@@ -9,7 +9,16 @@ beforeAll(function(done) {
 });
 
 beforeEach(function() {
-  browser.get('http://localhost:4000/#!/category');
+  browser.get('http://localhost:4000');
+  // browser.sleep(10000);
+  element(by.model('user.email')).clear();
+  element(by.model('user.password')).clear();
+  element(by.model('user.email')).sendKeys('foo@bar.com');
+  element(by.model('user.password')).sendKeys('foobar');
+  var loginBtn = element(by.css('.login-button'));
+  browser.sleep(500);
+  loginBtn.click();
+  element(by.css('[ui-sref="category"]')).click();
 });
 
 describe('category page', function() {
@@ -27,7 +36,7 @@ describe('category page', function() {
 
 
   it('should allow you to update a category', function() {
-    var btnElement, txtElement, txtElementText;
+    var btnElement, txtElement, txtElementText, xclElement;
     element.all(by.repeater('item in categories')).then(function (items) {
       btnElement = items[0].element(by.buttonText('Edit'));
       txtElement = items[0].element(by.className('name'));
@@ -37,7 +46,8 @@ describe('category page', function() {
         btnElement.click();
         var input = element(by.model('editedCategory.name'));
         expect(input.getAttribute('value')).toBe(txtElementText);
-
+        xclElement = element(by.buttonText('Cancel'));
+        xclElement.click();
       });
     });
   });
