@@ -11,3 +11,7 @@ tooltip a {
   color: #9b9b9b;
   display: block;
 }
+
+label.col-form-label {
+  display: block;
+}
