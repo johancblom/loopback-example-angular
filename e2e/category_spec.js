@@ -3,12 +3,9 @@ getRandomNum = function(min, max){
 };
 
 beforeAll(function(done) {
-  var app = require('../server/server');
-  app.dataSources.db.automigrate();
-  done();
-});
+  // var app = require('../server/server');
+  // app.dataSources.db.automigrate();
 
-beforeEach(function() {
   browser.get('http://localhost:4000');
   // browser.sleep(10000);
   element(by.model('user.email')).clear();
@@ -19,7 +16,10 @@ beforeEach(function() {
   browser.sleep(500);
   loginBtn.click();
   element(by.css('[ui-sref="category"]')).click();
+
+  done();
 });
+
 
 describe('category page', function() {
   it('should allow you to add a category', function() {

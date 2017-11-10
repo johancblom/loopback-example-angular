@@ -1,6 +1,6 @@
 beforeAll(function(done) {
-  var app = require('../server/server');
-  app.dataSources.db.automigrate();
+  // var app = require('../server/server');
+  // app.dataSources.db.automigrate();
   done();
 });
 

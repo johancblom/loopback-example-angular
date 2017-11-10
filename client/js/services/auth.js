@@ -4,7 +4,7 @@ angular
                                                                     $rootScope) {
     function login(email, password) {
       return User
-        .login({email: email, password: password})
+        .login({ rememberMe: true}, {email: email, password: password})
         .$promise
         .then(function(response) {
           console.log(response.id);
