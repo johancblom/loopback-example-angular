@@ -3,6 +3,8 @@ describe('category controller tests', function(){
 
   beforeEach(angular.mock.module('app'));
 
+  beforeEach(module('uiRouterNoop'));
+
   beforeEach(angular.mock.inject(function(_$q_, $rootScope, $controller) {
     $q = _$q_;
     scope = $rootScope.$new();
@@ -28,18 +30,15 @@ describe('category controller tests', function(){
       },
       upsert : function (a) {
         upsertDeferred = $q.defer();
-        console.log('in mock upsert');
         return {$promise: upsertDeferred.promise}
       },
       deleteById : function (a) {
-        console.log('in deletebyId');
         deleteDeferred = $q.defer();
         return {$promise: deleteDeferred.promise}
       }
     };
     todoMock = {
       findOne : function (a) {
-        console.log('in todo findOne');
         todoDeferred = $q.defer();
         return {$promise: todoDeferred.promise};
       }
@@ -56,12 +55,6 @@ describe('category controller tests', function(){
     scope.categoryForm = {name: {$setValidity: function() {}, $setPristine: function() {}, $valid: true, $pristine: true}};
 
   }));
-
-
-  // beforeEach(function() {
-  //   queryDeferred.resolve(['a']);
-  //   scope.$apply();
-  // });
 
   it('should pass this canary test', function() {
     expect(true).toEqual(true);
@@ -132,7 +125,6 @@ describe('category controller tests', function(){
     spyOn(scope, 'createCategory');
     var a, b;
     categoryMock = {findOne : function (a, b, c) {
-      console.log("returning: " + c);
       return c(); }
     }
 
@@ -240,17 +232,6 @@ describe('category controller tests', function(){
 
   })
 
-  // $scope.inputChanged = function() {
-  //   console.log('detected input change');
-  //   Category.findOne(({filter: {'where': {'name': $scope.editedCategory.name}}}))
-  //     .$promise
-  //     .then(function() {
-  //         $scope.categoryForm.name.$setValidity('duplicate', false);
-  //       },
-  //       function() {
-  //         $scope.categoryForm.name.$setValidity('duplicate', true);
-  //       });
-  // }
   it('inputChanged should call findOne', function(done) {
     var b = function() {};
     categoryMock.findOne = function (a, b, c) {

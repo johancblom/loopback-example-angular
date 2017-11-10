@@ -11,7 +11,6 @@ angular
     $scope.categories = [];
 
     var onSuccess = function(results) {
-      console.log('results' + results);
       $scope.categories = results;
     }
 
@@ -58,7 +57,6 @@ angular
         Category.upsert(category)
           .$promise
           .then(function (category) {
-            console.log('in update');
             $scope.editedCategory = null;
             $('.focus').focus();
             $scope.getCategories();
@@ -71,10 +69,8 @@ angular
       Todo.findOne({filter: {'where': {'categoryId': item.id}}})
         .$promise
         .then(function () {
-          console.log('found an existing todo');
           alert('found an existing todo in that category, you can\'t delete it');
         }, function () {
-          console.log('did not find an existing todo');
           Category
             .deleteById(item)
             .$promise
@@ -85,7 +81,6 @@ angular
     };
 
     $scope.startEdit = function (category) {
-      console.log("startEdit: category is: " + category.name);
       $scope.editedCategory = category;
     };
 
@@ -96,7 +91,6 @@ angular
     }
 
     $scope.inputChanged = function() {
-      console.log('detected input change');
       Category.findOne(({filter: {'where': {'name': $scope.editedCategory.name}}}))
         .$promise
         .then(function() {
