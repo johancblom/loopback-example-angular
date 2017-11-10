@@ -7,7 +7,8 @@ angular
   .module('app', [
     'lbServices',
     'ui.router',
-    'ngMessages'
+    'ngMessages',
+    '720kb.tooltips'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                                                             $urlRouterProvider) {

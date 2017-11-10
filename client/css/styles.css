@@ -4,3 +4,10 @@ body {
 .glyphicon-remove:hover {
   cursor:pointer
 }
+
+tooltip a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #9b9b9b;
+  display: block;
+}
