@@ -8,7 +8,8 @@ angular
     'lbServices',
     'ui.router',
     'ngMessages',
-    '720kb.tooltips'
+    '720kb.tooltips',
+    'ngStorage'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                                                             $urlRouterProvider) {
@@ -43,12 +44,20 @@ angular
 
 
   }])
-  .run(['$rootScope', '$state', function($rootScope, $state) {
+  .run(['$rootScope', '$state', '$window', 'User', function($rootScope, $state, $window, User) {
     $rootScope.$on('$stateChangeStart', function(event, next) {
       // redirect to login page if not logged in
-      if (next.authenticate && !$rootScope.currentUser) {
+      if (next.authenticate && !$rootScope.currentUser && !$window.localStorage.getItem('$LoopBack$accessTokenId')) {
         event.preventDefault(); //prevent current page from loading
         $state.go('forbidden');
+      }
+      else if(!$rootScope.currentUser && $window.localStorage.getItem('$LoopBack$accessTokenId')) {
+        var userId = localStorage.getItem('$LoopBack$currentUserId');
+        var accessTokenId = localStorage.getItem('$LoopBack$accessTokenId');
+        User.findById({id: userId}, function(result) {
+            $rootScope.currentUser = {email: result.email, id: result.id};
+        });
+
       }
     });
   }]);

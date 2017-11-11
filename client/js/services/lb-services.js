@@ -3717,7 +3717,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
     LoopBackAuth.prototype.save = function() {
       var self = this;
-      var storage = this.rememberMe ? localStorage : sessionStorage;
+      //var storage = this.rememberMe ? localStorage : sessionStorage;
+      var storage = localStorage;
+
       props.forEach(function(name) {
         save(storage, name, self[name]);
       });
