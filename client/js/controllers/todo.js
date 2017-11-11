@@ -13,7 +13,6 @@ angular
         .find({filter: {'include': 'category'}})
         .$promise
         .then(function(results) {
-          console.log(results);
           $scope.todos = results;
         });
     }

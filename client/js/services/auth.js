@@ -7,7 +7,6 @@ angular
         .login({ rememberMe: true}, {email: email, password: password})
         .$promise
         .then(function(response) {
-          console.log(response.id);
           $rootScope.currentUser = {
             id: response.user.id,
             tokenId: response.id,
