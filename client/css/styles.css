@@ -15,3 +15,7 @@ tooltip a {
 label.col-form-label {
   display: block;
 }
+
+.error-msg {
+  color: darkred;
+}

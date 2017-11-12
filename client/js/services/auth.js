@@ -3,6 +3,7 @@ angular
   .factory('AuthService', ['User', '$q', '$rootScope', function(User, $q,
                                                                     $rootScope) {
     function login(email, password) {
+      $rootScope.message = "";
       return User
         .login({ rememberMe: true}, {email: email, password: password})
         .$promise
@@ -12,6 +13,8 @@ angular
             tokenId: response.id,
             email: email
           };
+        }, function(err) {
+          $rootScope.message = "Login failed, please try again";
         });
     }
 

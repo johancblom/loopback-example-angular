@@ -17,9 +17,12 @@
           Password is required</p>
       </div>
 
-      <div class="actions">
+      <div class="actions form-group">
         <label></label>
         <button class="login-button">Login</button>
+      </div>
+      <div ng-show="message != ''">
+        <span class="error-msg">{{message}}</span>
       </div>
     </fieldset>
   </form>
