@@ -21,6 +21,9 @@ module.exports = function(config) {
       'client/vendor/angular-ui-router/release/angular-ui-router.js',
       'client/vendor/angular-messages/angular-messages.js',
       'client/vendor/jquery/dist/jquery.js',
+      'client/vendor/angular-tooltips/dist/angular-tooltips.js',
+      'client/vendor/angular-cookies/angular-cookies.js',
+      'client/vendor/angularLocalStorage/src/angularLocalStorage.js',
       'client/js/**/*.js',
       'client/tests/**/*.js'
     ],

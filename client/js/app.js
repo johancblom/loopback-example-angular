@@ -9,7 +9,7 @@ angular
     'ui.router',
     'ngMessages',
     '720kb.tooltips',
-    'ngStorage'
+    'angularLocalStorage'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                                                             $urlRouterProvider) {

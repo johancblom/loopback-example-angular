@@ -1,6 +1,6 @@
 angular
   .module('app')
-.controller('AuthLoginController', ['$scope', 'AuthService', '$state', '$localStorage',
+.controller('AuthLoginController', ['$scope', 'AuthService', '$state',
   function($scope, AuthService, $state) {
     $scope.user = {
       email: 'foo@bar.com',
