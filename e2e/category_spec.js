@@ -16,12 +16,33 @@ beforeAll(function(done) {
   browser.sleep(500);
   loginBtn.click();
   element(by.css('[ui-sref="category"]')).click();
+  browser.sleep(500);
 
   done();
 });
 
+beforeEach(function() {
+  element(by.css('[ui-sref="category"]')).click();
+});
+
 
 describe('category page', function() {
+  it('should allow you to login first', function() {
+    browser.get('http://localhost:4000');
+    // browser.sleep(10000);
+    element(by.model('user.email')).clear();
+    element(by.model('user.password')).clear();
+    element(by.model('user.email')).sendKeys('foo@bar.com');
+    element(by.model('user.password')).sendKeys('foobar');
+    var loginBtn = element(by.css('.login-button'));
+    browser.sleep(500);
+    loginBtn.click();
+    element(by.css('[ui-sref="category"]')).click();
+    browser.sleep(500);
+    var createBtn = element(by.buttonText('Create'));
+    expect(createBtn.getText()).toContain('Create');
+  });
+
   it('should allow you to add a category', function() {
 
     var randomNumber = getRandomNum(0,1000);
