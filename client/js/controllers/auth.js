@@ -12,6 +12,8 @@ angular
         .then(function() {
           if (!$scope.message)
             $state.go('todo');
+        }, function(err) {
+          console.log('Error: ' + err);
         });
     };
   }])

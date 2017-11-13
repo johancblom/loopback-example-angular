@@ -14,7 +14,8 @@ angular
             email: email
           };
         }, function(err) {
-          $rootScope.message = "Login failed, please try again";
+           $rootScope.currentUser = null;
+           $rootScope.message = "Login failed, please try again";
         });
     }
 

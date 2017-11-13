@@ -51,7 +51,7 @@ angular
         event.preventDefault(); //prevent current page from loading
         $state.go('forbidden');
       }
-      else if(!$rootScope.currentUser && $window.localStorage.getItem('$LoopBack$accessTokenId')) {
+      else if(next.authenticate && !$rootScope.currentUser && $window.localStorage.getItem('$LoopBack$accessTokenId')) {
         var userId = localStorage.getItem('$LoopBack$currentUserId');
         var accessTokenId = localStorage.getItem('$LoopBack$accessTokenId');
         User.findById({id: userId}, function(result) {

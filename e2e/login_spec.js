@@ -12,9 +12,7 @@ describe('login page', function() {
     element(by.model('user.email')).sendKeys('blah');
     element(by.model('user.password')).sendKeys('blah');
     var loginBtn = element(by.css('.login-button'));
-    browser.sleep(500);
     loginBtn.click();
-    browser.sleep(500);
     expect(element(by.css('.error-msg')).getText()).toContain('Login failed, please try again');
   })
 
@@ -25,9 +23,7 @@ describe('login page', function() {
     element(by.model('user.email')).sendKeys('foo@bar.com');
     element(by.model('user.password')).sendKeys('foobar');
     var loginBtn = element(by.css('.login-button'));
-    browser.sleep(500);
     loginBtn.click();
-    browser.sleep(500);
     expect(element(by.css('h1')).getText()).toContain('Todo');
   })
 });
