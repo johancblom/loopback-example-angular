@@ -13,9 +13,11 @@ angular
             tokenId: response.id,
             email: email
           };
+          return (response);
         }, function(err) {
            $rootScope.currentUser = null;
            $rootScope.message = "Login failed, please try again";
+           return $q.reject("login error");
         });
     }
 

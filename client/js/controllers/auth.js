@@ -10,7 +10,6 @@ angular
     $scope.login = function() {
       AuthService.login($scope.user.email, $scope.user.password)
         .then(function() {
-          if (!$scope.message)
             $state.go('todo');
         }, function(err) {
           console.log('Error: ' + err);
