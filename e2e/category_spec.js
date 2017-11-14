@@ -67,7 +67,8 @@ describe('category page', function() {
         btnElement.click();
         var input = element(by.model('editedCategory.name'));
         expect(input.getAttribute('value')).toBe(txtElementText);
-        xclElement = element(by.buttonText('Cancel'));
+        input.sendKeys(' changed');
+        xclElement = element(by.buttonText('Save'));
         xclElement.click();
       });
     });
