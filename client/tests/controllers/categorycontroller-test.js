@@ -1,5 +1,5 @@
 describe('category controller tests', function(){
-  var $rootScope, scope, state, controller, categoryServiceMock, categoryMock, todoMock, findOneDeferred, queryDeferred, createDeferred, upsertDeferred, todoDeferred, deleteDeferred
+  var $rootScope, scope, state, controller, categoryMock, todoMock, findOneDeferred, queryDeferred, createDeferred, upsertDeferred, todoDeferred, deleteDeferred
 
   beforeEach(angular.mock.module('app'));
 
@@ -8,10 +8,6 @@ describe('category controller tests', function(){
   beforeEach(angular.mock.inject(function(_$q_, $rootScope, $controller) {
     $q = _$q_;
     scope = $rootScope.$new();
-    categoryServiceMock = {getCategories : function() {
-      queryDeferred = $q.defer();
-      return queryDeferred.promise;
-    }};
     categoryMock = {
       find : function() {
         findOneDeferred = $q.defer();
@@ -47,7 +43,6 @@ describe('category controller tests', function(){
     controller = $controller('CategoryController', {
       $scope: scope,
       $state: state,
-      Categories: categoryServiceMock,
       Category: categoryMock,
       Todo: todoMock
     });
