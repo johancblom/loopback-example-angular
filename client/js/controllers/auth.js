@@ -16,10 +16,10 @@ angular
         });
     };
   }])
-  .controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
-    function($scope, AuthService, $state) {
+.controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
+  function($scope, AuthService, $state) {
       AuthService.logout()
-        .then(function() {
+        .then(function () {
           $state.go('login');
         });
-    }])
+}])

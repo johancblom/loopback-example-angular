@@ -29,7 +29,7 @@ describe('login controller tests', function () {
       go: function(to) {}
     };
 
-    controller = $controller('AuthLoginController', {
+    controller = $controller('AuthLogoutController', {
       $scope: scope,
       AuthService: authServiceMock,
       $state: state
@@ -37,43 +37,16 @@ describe('login controller tests', function () {
 
   }));
 
-  it('should pass this canary test', function () {
-    expect(true).toEqual(true);
-  });
 
-  it('should interact with the login service', function () {
-
-    spyOn(authServiceMock, 'login').and.callThrough();
-
-    scope.login();
-
-    expect(authServiceMock.login).toHaveBeenCalled();
-  });
-
-  it('should set state to todo when login succeeds', function() {
-
+  it('should set state to login when logout called', function() {
     spyOn(state, 'go').and.callThrough();
-
-    scope.login();
 
     deferred.resolve();
 
-    scope.$apply();
-
-    expect(state.go).toHaveBeenCalledWith('todo');
-  });
-
-  it('should not alter state when login fails', function() {
-    spyOn(state, 'go').and.callThrough();
-
-    scope.login();
-
-    deferred.reject();
 
     scope.$apply();
 
-    expect(state.go).not.toHaveBeenCalled();
+    expect(state.go).toHaveBeenCalledWith('login');
   });
-
 });
 
