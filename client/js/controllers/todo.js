@@ -8,7 +8,7 @@ angular
   .controller('TodoController', ['$scope', '$state', 'Todo', 'Category', function($scope,
                                                                       $state, Todo, Category) {
     $scope.todos = [];
-    function getTodos() {
+    $scope.getTodos = function() {
       Todo
         .find({filter: {'include': 'category'}})
         .$promise
@@ -16,7 +16,7 @@ angular
           $scope.todos = results;
         });
     }
-    getTodos();
+    $scope.getTodos();
 
     $scope.addTodo = function() {
       console.log($scope.newTodo);
@@ -28,7 +28,7 @@ angular
           $scope.category = null;
           $scope.todoForm.content.$setPristine();
           $('.focus').focus();
-          getTodos();
+          $scope.getTodos();
         });
     };
 
@@ -41,7 +41,7 @@ angular
           $scope.category = null;
           //$scope.todoForm.content.$setPristine();
           $('.focus').focus();
-          getTodos();
+          $scope.getTodos();
         });
     }
     $scope.removeTodo = function(item) {
@@ -49,7 +49,7 @@ angular
         .deleteById(item)
         .$promise
         .then(function() {
-          getTodos();
+          $scope.getTodos();
         });
     };
 
@@ -59,9 +59,9 @@ angular
         .upsert({id: $scope.editedTodo.id, categoryId: $scope.category.id, content: item.content})
         .$promise
         .then(function() {
-          getTodos();
+          $scope.getTodos();
         }, function() {
-          getTodos();
+          $scope.getTodos();
         });
       $scope.editedTodo = null;
       $scope.category = null;
