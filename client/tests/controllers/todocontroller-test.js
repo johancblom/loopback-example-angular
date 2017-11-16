@@ -1,5 +1,5 @@
 describe('todo controller tests', function(){
-  var scope, state, controller, categoryMock, todoMock, findDeferred, findCategoryDeferred, createDeferred, findOneDeferred;
+  var scope, state, controller, categoryMock, todoMock, findDeferred, findCategoryDeferred, createDeferred, findOneDeferred, deleteDeferred, updateDeferred;
 
   beforeEach(angular.mock.module('app'));
 
@@ -16,6 +16,20 @@ describe('todo controller tests', function(){
       find : function() {
         findDeferred = $q.defer();
         return {$promise: findDeferred.promise};
+      },
+      deleteById : function(id) {
+        //just remove the only item that we inserted:
+        scope.todos.pop();
+        deleteDeferred = $q.defer();
+        return {$promise: deleteDeferred.promise};
+      },
+      upsert: function(data) {
+        updateDeferred = $q.defer();
+        if (data.content != 'failure') {
+          scope.todos = [{content: ''}];
+          scope.todos[0].content = data.content;
+        }
+        return {$promise: updateDeferred.promise};
       }
     }
 
@@ -25,7 +39,6 @@ describe('todo controller tests', function(){
         return {$promise: findDeferred.promise};
       },
       todos: {create: function() {
-        console.log('in categoryMock.todos');
         createDeferred=$q.defer();
         return {$promise: createDeferred.promise};
        }}
@@ -70,20 +83,69 @@ describe('todo controller tests', function(){
     expect(scope.todos[0].content).toBe('blah');
   })
 
-  it('addTodo should set the new todo in scope', function() {
+  it('createTodo should set the new todo in scope', function() {
     scope.category = {id: 1};
-    scope.newTodo = {content: 'abc'};
+    scope.editedTodo = {content: 'abc'};
 
-    scope.addTodo();
-    createDeferred.resolve([{id: 1, content: 'abc'}]);
+    scope.createTodo();
+    createDeferred.resolve([{id: 1, content: 'def'}]);
     findDeferred.resolve([{id: 1, content: 'abc'}]);
 
     scope.$apply();
     expect(scope.todos.length).toBe(1);
     expect(scope.todos[0].id).toBe(1);
     expect(scope.todos[0].content).toBe('abc');
+  });
+
+  it('removeTodo should remove the todo from scope', function() {
+    scope.todos = [{id: 1, content: 'blah'}];
+    scope.removeTodo(1);
+    deleteDeferred.resolve();
+    scope.$root.$digest();
+    expect(scope.todos.length).toBe(0);
+  });
+
+  it('updateTodo should set a todo to a new value', function() {
+    scope.editedTodo = {id: 1};
+    scope.category = {id: 1};
+    scope.todos = [{id: 1, content: 'blah'}];
+    item = {content: 'bleh'};
+    scope.updateTodo(item);
+    updateDeferred.resolve();
+    scope.$root.$digest();
+    expect(scope.todos[0].content).toBe('bleh');
+  });
+
+  it('updateTodo should not set a todo to a new value when upsert fails', function() {
+    scope.editedTodo = {id: 1};
+    scope.category = {id: 1};
+    scope.todos = [{id: 1, content: 'blah'}];
+    item = {content: 'failure'};
+    scope.updateTodo(item);
+    updateDeferred.reject();
+    scope.$root.$digest();
+    expect(scope.todos[0].content).toBe('blah');
   })
 
+  it('startEdit should set editedCategory to the category', function() {
+    scope.startEdit({category: {name: 'a'}});
+    expect(scope.editedTodo).toEqual({category: {name: 'a'}});
+  })
+
+  it('cancelEdit should set the editedCategory to null', function() {
+    scope.cancelEdit();
+    expect(scope.editedTodo).toEqual(null);
+  })
+
+  it('cancelEdit should set the category to null', function() {
+    scope.category = {a: 'a'};
+    scope.editedTodo = {b: 'b'};
+    scope.cancelEdit();
+
+    expect (scope.category).toBeNull();
+    expect (scope.editedTodo).toBeNull();
+
+  })
 
 });
 

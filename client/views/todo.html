@@ -15,7 +15,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="item in todos" ng-hide="item.id == editedTodo.id">
-          <td>{{item.content}}</td>
+          <td class="content">{{item.content}}</td>
           <td>{{item.category.name}}</td>
           <td>
             <button ng-click="startEdit(item)" class="btn btn-xs btn-primary">

@@ -18,20 +18,6 @@ angular
     }
     $scope.getTodos();
 
-    $scope.addTodo = function() {
-      console.log($scope.newTodo);
-      Category.todos
-        .create({id: $scope.category.id}, {content: $scope.newTodo.content})
-        .$promise
-        .then(function(todo) {
-          $scope.newTodo = null;
-          $scope.category = null;
-          $scope.todoForm.content.$setPristine();
-          $('.focus').focus();
-          $scope.getTodos();
-        });
-    };
-
     $scope.createTodo = function() {
       Category.todos
         .create({id: $scope.category.id}, {content: $scope.editedTodo.content})
@@ -68,20 +54,17 @@ angular
     };
 
     $scope.startEdit = function (todo) {
-      console.log("startEdit: todo is: " + todo.category.name);
       $scope.editedTodo = todo;
       $scope.category = todo.category;
-    }
+    };
 
     Category.find().$promise.then(function (results) {
       $scope.categories = results;
     });
 
-
     $scope.cancelEdit = function() {
       $scope.editedTodo = null;
       $scope.category = null;
     };
-
 
   }]);
