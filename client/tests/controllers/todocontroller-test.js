@@ -1,5 +1,5 @@
 describe('todo controller tests', function(){
-  var scope, state, controller, categoryMock, todoMock, findDeferred, findCategoryDeferred, createDeferred, findOneDeferred, deleteDeferred, updateDeferred;
+  var scope, state, controller, categoryMock, todoMock, findDeferred, findCategoryDeferred, createDeferred, findOneDeferred, deleteDeferred, updateDeferred, createDeferred;
 
   beforeEach(angular.mock.module('app'));
 
@@ -9,6 +9,10 @@ describe('todo controller tests', function(){
     $q = _$q_;
     scope = $rootScope.$new();
     todoMock = {
+      create : function() {
+        createDeferred = $q.defer();
+        return {$promise: createDeferred.promise};
+      },
       findOne : function (a) {
         findOneDeferred = $q.defer();
         return {$promise: findOneDeferred.promise};
@@ -37,11 +41,7 @@ describe('todo controller tests', function(){
       find : function() {
         findCategoryDeferred = $q.defer();
         return {$promise: findDeferred.promise};
-      },
-      todos: {create: function() {
-        createDeferred=$q.defer();
-        return {$promise: createDeferred.promise};
-       }}
+      }
     }
 
     scope.todoForm = {name: {$setValidity: function() {}, $setPristine: function() {}, $valid: true, $pristine: true}, content: {$setPristine: function() {}}};

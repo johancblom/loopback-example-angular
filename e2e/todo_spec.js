@@ -2,27 +2,6 @@ getRandomNum = function(min, max){
   return parseInt(Math.random() * (max - min) + min);
 };
 
-beforeAll(function(done) {
-  // var app = require('../server/server');
-  // app.dataSources.db.automigrate();
-
-  // browser.get('http://localhost:4000');
-  // // browser.sleep(10000);
-  // element(by.model('user.email')).clear();
-  // element(by.model('user.password')).clear();
-  // element(by.model('user.email')).sendKeys('foo@bar.com');
-  // element(by.model('user.password')).sendKeys('foobar');
-  // var loginBtn = element(by.css('.login-button'));
-  // loginBtn.click();
-  // element(by.css('[ui-sref="todo"]')).click();
-  //
-  // var randomNumber = getRandomNum(0,1000);
-  // element(by.model('editedTodo.name')).sendKeys('todo ' + randomNumber);
-  //
-  // var createBtn = element(by.buttonText('Create'));
-  // createBtn.click();
-  done();
-});
 describe('Todo test', function() {
   beforeEach(function() {
     element(by.css('[ui-sref="todo"]')).click();
@@ -70,6 +49,19 @@ describe('Todo test', function() {
       var todo = element.all(by.repeater('item in todos')).last();
 
       expect(todo.getText()).toContain('todo '+randomNumber);
+    });
+
+    it('should not allow you to add a todo without having selected a category', function() {
+
+      var randomNumber = getRandomNum(0,1000);
+      element(by.model('editedTodo.content')).sendKeys('todo ' + randomNumber);
+
+
+      var createBtn = element(by.buttonText('Create'));
+
+      element(by.buttonText('Create')).getAttribute('disabled').then(function(attr){
+        expect(attr).toBe('true');
+      });
     });
 
 

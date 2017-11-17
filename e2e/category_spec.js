@@ -3,8 +3,14 @@ getRandomNum = function(min, max){
 };
 
 beforeAll(function(done) {
-  // var app = require('../server/server');
-  // app.dataSources.db.automigrate();
+  var app = require('../server/server');
+
+  app.dataSources.db.automigrate('Todo', function(err) {
+    console.log(err);
+  });
+  app.dataSources.db.automigrate('Category', function(err) {
+    console.log(err);
+  });
 
   browser.get('http://localhost:4000');
   // browser.sleep(10000);

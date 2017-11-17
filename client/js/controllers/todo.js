@@ -19,8 +19,9 @@ angular
     $scope.getTodos();
 
     $scope.createTodo = function() {
-      Category.todos
-        .create({id: $scope.category.id}, {content: $scope.editedTodo.content})
+      Todo.create(
+        {content: $scope.editedTodo.content, categoryId: $scope.category.id}
+      )
         .$promise
         .then(function(todo) {
           $scope.editedTodo = null;
