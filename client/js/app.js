@@ -56,6 +56,10 @@ angular
         var accessTokenId = localStorage.getItem('$LoopBack$accessTokenId');
         User.findById({id: userId}, function(result) {
             $rootScope.currentUser = {email: result.email, id: result.id};
+        }).$promise.then(function() {}, function(err) {
+          $window.localStorage.removeItem('$LoopBack$accessTokenId');
+          $window.localStorage.removeItem('$LoopBack$currentUserId');
+          $state.go('forbidden');
         });
 
       }
