@@ -29,7 +29,7 @@
         <tr ng-class="{danger: editedTodo}">
           <td><input ng-model="editedTodo.content" name="content" required/></td>
           <td><select ng-model="category"
-                      ng-options="category as category.name for category in categories track by category.id" required/>
+                      ng-options="category as category.name for category in availableCategories track by category.id" required/>
           </td>
           <td>
             <button ng-hide="editedTodo.id"

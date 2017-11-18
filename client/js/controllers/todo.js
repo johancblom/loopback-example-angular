@@ -59,8 +59,8 @@ angular
       $scope.category = todo.category;
     };
 
-    Category.find().$promise.then(function (results) {
-      $scope.categories = results;
+    Category.find({filter: {'include': 'todos'}}).$promise.then(function (results) {
+      $scope.availableCategories = results.filter(function(item) { return item.todos.length == 0}) ;
     });
 
     $scope.cancelEdit = function() {

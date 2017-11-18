@@ -16,7 +16,7 @@ angular
 
     $scope.getCategories = function() {
       //Categories.getCategories().then(onSuccess);
-      Category.find().$promise.then(onSuccess);
+      Category.find({filter: {'include': 'todos'}}).$promise.then(onSuccess);
     };
 
     $scope.getCategories();
