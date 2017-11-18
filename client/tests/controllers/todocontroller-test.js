@@ -40,7 +40,7 @@ describe('todo controller tests', function(){
     categoryMock = {
       find : function() {
         findCategoryDeferred = $q.defer();
-        return {$promise: findDeferred.promise};
+        return {$promise: findCategoryDeferred.promise};
       }
     }
 
@@ -81,10 +81,10 @@ describe('todo controller tests', function(){
     expect(scope.todos.length).toBe(1);
     expect(scope.todos[0].id).toBe(1);
     expect(scope.todos[0].content).toBe('blah');
-  })
+  });
 
   it('createTodo should set the new todo in scope', function() {
-    scope.category = {id: 1};
+    scope.category = {id: 1, todos: []};
     scope.editedTodo = {content: 'abc'};
 
     scope.createTodo();
