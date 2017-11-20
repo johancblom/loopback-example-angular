@@ -12,7 +12,7 @@ beforeAll(function(done) {
     console.log(err);
   });
 
-  browser.get('http://localhost:4000');
+  browser.get('http://localhost:4000/#!/login');
   // browser.sleep(10000);
   element(by.model('user.email')).clear();
   element(by.model('user.password')).clear();
@@ -34,7 +34,7 @@ beforeEach(function() {
 
 describe('category page', function() {
   it('should allow you to login first', function() {
-    browser.get('http://localhost:4000');
+    browser.get('http://localhost:4000/#!/login');
     // browser.sleep(10000);
     element(by.model('user.email')).clear();
     element(by.model('user.password')).clear();

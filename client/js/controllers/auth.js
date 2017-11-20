@@ -15,11 +15,19 @@ angular
           console.log('Error: ' + err);
         });
     };
+    $scope.register = function() {
+      AuthService.register($scope.user.email, $scope.user.password)
+        .then(function() {
+          $state.go('login');
+        }, function(err) {
+          console.log('Error: ' + err);
+        })
+    }
   }])
 .controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
   function($scope, AuthService, $state) {
       AuthService.logout()
         .then(function () {
-          $state.go('login');
+          $state.go('forbidden');
         });
 }])

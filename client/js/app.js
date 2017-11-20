@@ -14,7 +14,7 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                                                             $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/forbidden');
     $stateProvider
       .state('todo', {
         url: '/todo',
@@ -35,6 +35,11 @@ angular
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
+        controller: 'AuthLoginController'
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'views/register.html',
         controller: 'AuthLoginController'
       })
       .state('logout', {

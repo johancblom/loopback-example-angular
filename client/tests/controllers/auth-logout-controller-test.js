@@ -38,7 +38,7 @@ describe('login controller tests', function () {
   }));
 
 
-  it('should set state to login when logout called', function() {
+  it('should set state to forbidden when logout called', function() {
     spyOn(state, 'go').and.callThrough();
 
     deferred.resolve();
@@ -46,7 +46,7 @@ describe('login controller tests', function () {
 
     scope.$apply();
 
-    expect(state.go).toHaveBeenCalledWith('login');
+    expect(state.go).toHaveBeenCalledWith('forbidden');
   });
 });
 
