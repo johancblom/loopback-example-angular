@@ -36,7 +36,18 @@ angular
           email: email,
           password: password
         })
-        .$promise;
+        .$promise
+        .then(function() {}, function(err) {
+          console.log(err);
+          if((err.data.error.message) && (err.data.error.message).includes('Email already exists')) {
+            $rootScope.message = "That email address is already in use, please login instead (click Cancel)";
+          }
+          else {
+            $rootScope.message = "Registration failed, possible server issue, please try again";
+          }
+          return $q.reject("registration error");
+        }
+    )
     }
 
     return {

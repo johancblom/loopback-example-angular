@@ -1,29 +1,25 @@
 <section>
-  <form name="form" ng-submit="register()">
-    <fieldset>
-      <legend>Register your email and password here</legend>
-
-      <div class="form-group">
-        <label class="col-form-label">Email</label>
-        <input type="text" ng-model="user.email">
-        <p class="hint" ng-show="form.email.$error.required && submitted">Email is
-          required</p>
+  <div class="col-md-6 col-md-offset-3">
+    <h2>Register</h2>
+    <form name="form" ng-submit="register()" role="form">
+      <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" class="form-control" ng-model="user.email" required />
+        <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
       </div>
-
-      <div class="form-group">
-        <label class="col-form-label">Password</label>
-        <input type="password" ng-model="user.password">
-        <p class="hint" ng-show="form.password.$error.required && submitted">
-          Password is required</p>
+      <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control" ng-model="user.password" required />
+        <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
       </div>
-
-      <div class="actions form-group">
-        <label></label>
-        <button class="register-button">Register</button>
+      <div class="form-actions">
+        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
+        <a ui-sref="login" class="btn btn-link">Cancel</a>
       </div>
+      <div><span>&nbsp</span></div>
       <div ng-show="message != ''">
         <span class="error-msg">{{message}}</span>
       </div>
-    </fieldset>
-  </form>
+    </form>
+  </div>
 </section>

@@ -46,7 +46,7 @@ describe('login controller tests', function () {
 
     scope.$apply();
 
-    expect(state.go).toHaveBeenCalledWith('forbidden');
+    expect(state.go).toHaveBeenCalledWith('login');
   });
 });
 

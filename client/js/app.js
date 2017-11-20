@@ -14,7 +14,7 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                                                             $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/forbidden');
+    $urlRouterProvider.otherwise('/login');
     $stateProvider
       .state('todo', {
         url: '/todo',

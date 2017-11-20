@@ -28,6 +28,6 @@ angular
   function($scope, AuthService, $state) {
       AuthService.logout()
         .then(function () {
-          $state.go('forbidden');
+          $state.go('login');
         });
 }])
