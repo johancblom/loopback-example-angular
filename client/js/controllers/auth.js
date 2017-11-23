@@ -23,6 +23,11 @@ angular
           console.log('Error: ' + err);
         })
     }
+
+    console.log($state.current);
+    if ($state.current.name == 'login') {
+      $scope.message = "";
+    }
   }])
 .controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
   function($scope, AuthService, $state) {
