@@ -13,6 +13,7 @@ angular
             $state.go('todo');
         }, function(err) {
           console.log('Error: ' + err);
+          $scope.message = "login failed, please try again";
         });
     };
     $scope.register = function() {
@@ -24,7 +25,6 @@ angular
         })
     }
 
-    console.log($state.current);
     if ($state.current.name == 'login') {
       $scope.message = "";
     }
