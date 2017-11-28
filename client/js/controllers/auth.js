@@ -1,7 +1,7 @@
 angular
   .module('app')
-.controller('AuthLoginController', ['$scope', 'AuthService', '$state',
-  function($scope, AuthService, $state) {
+.controller('AuthLoginController', ['$scope', 'AuthService', '$state', 'messaging', 'events',
+  function($scope, AuthService, $state, messaging, events) {
     $scope.user = {
       email: 'foo@bar.com',
       password: 'foobar'
@@ -12,7 +12,6 @@ angular
         .then(function() {
             $state.go('todo');
         }, function(err) {
-          console.log('Error: ' + err);
           $scope.message = "login failed, please try again";
         });
     };
@@ -25,14 +24,17 @@ angular
         })
     }
 
-    if ($state.current.name == 'login') {
-      $scope.message = "";
+    if ($state.current.name == 'login' || $state.current.name == 'register') {
+      messaging.publish(events.message._CLEAR_NOTIFICATIONS_);
+
     }
   }])
-.controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
-  function($scope, AuthService, $state) {
+.controller('AuthLogoutController', ['$scope', 'AuthService', '$state', 'dialog',
+  function($scope, AuthService, $state, dialog) {
+
       AuthService.logout()
         .then(function () {
-          $state.go('login');
-        });
+          console.log('going back to login');
+           $state.go('login');
+         });
 }])

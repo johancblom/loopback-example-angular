@@ -26,6 +26,7 @@ describe('login controller tests', function () {
     };
 
     state = {
+      current: {name: 'abc'},
       go: function(to) {}
     };
 

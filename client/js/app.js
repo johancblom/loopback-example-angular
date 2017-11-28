@@ -69,5 +69,11 @@ angular
 
       }
     });
-  }]);
+  }])
+  .run(function (errors) {
+    errors.init();
+  })
+  .run(function (dialog) {
+    dialog.init();
+  });;
 

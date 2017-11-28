@@ -1,6 +1,8 @@
 describe('login page', function() {
   it('should not allow you to add a category', function() {
-    element(by.css('a[href*="#!/logout"')).click();
+    element(by.css('a[href*="#!/logout"')).click().then(function() {
+      element(by.css('#btnPopupOk')).click();
+    });
     browser.get('http://localhost:4000/#!/category');
     expect(element(by.css('h1')).getText()).toContain('Not logged in');
   })
@@ -13,7 +15,7 @@ describe('login page', function() {
     element(by.model('user.password')).sendKeys('blah');
     var loginBtn = element(by.css('.login-button'));
     loginBtn.click();
-    expect(element(by.css('.error-msg')).getText()).toContain('Login failed, please try again');
+    expect(element(by.css('.alert')).getText()).toContain('login failed, please try again');
   })
 
   it('should login valid users', function() {
