@@ -68,4 +68,13 @@ angular
       $scope.category = null;
     };
 
+    $scope.canEdit = function(item) {
+      console.log(item.ownerId, " ", $scope.currentUser);
+      if (item.ownerId == $scope.currentUser.id) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    };
   }]);

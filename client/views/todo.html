@@ -18,10 +18,10 @@
           <td class="content">{{item.content}}</td>
           <td>{{item.category.name}}</td>
           <td>
-            <button ng-click="startEdit(item)" class="btn btn-xs btn-primary">
+            <button ng-click="startEdit(item)" ng-disabled="!canEdit(item)" class="btn btn-xs btn-primary">
               Edit
             </button>
-            <button ng-click="removeTodo(item)" class="btn btn-xs btn-primary">
+            <button ng-click="removeTodo(item)" ng-disabled="!canEdit(item)" class="btn btn-xs btn-primary">
               Delete
             </button>
           </td>

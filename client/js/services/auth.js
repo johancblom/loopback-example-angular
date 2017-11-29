@@ -22,7 +22,7 @@ angular
           return (response);
         }, function(err) {
            $rootScope.currentUser = null;
-           messaging.publish(events.message._ADD_ERROR_MESSAGE_, ['login failed, please try again', 'alert.warning']);
+           messaging.publish(events.message._ADD_ERROR_MESSAGE_, ['Login failed, please try again', 'alert.warning']);
            return $q.reject("login error");
 
         });

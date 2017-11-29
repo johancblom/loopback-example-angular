@@ -15,7 +15,7 @@ describe('login page', function() {
     element(by.model('user.password')).sendKeys('blah');
     var loginBtn = element(by.css('.login-button'));
     loginBtn.click();
-    expect(element(by.css('.alert')).getText()).toContain('login failed, please try again');
+    expect(element(by.css('.alert')).getText()).toContain('Login failed, please try again');
   })
 
   it('should login valid users', function() {
