@@ -24,6 +24,9 @@
             <button ng-click="removeTodo(item)" ng-disabled="!canEdit(item)" class="btn btn-xs btn-primary">
               Delete
             </button>
+            <button ng-click="generatePDF(item)" class="btn btn-xs btn-primary">
+              Save as PDF
+            </button>
           </td>
         </tr>
         <tr ng-class="{danger: editedTodo}">
@@ -51,6 +54,7 @@
         </tr>
         </tbody>
       </table>
+      <button ng-click="generatePDF()" class="btn btn-primary">Generate PDF</button>
     </div>
 
 

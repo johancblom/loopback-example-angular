@@ -5,8 +5,8 @@
 
 angular
   .module('app')
-  .controller('TodoController', ['$scope', '$state', 'Todo', 'Category', function($scope,
-                                                                      $state, Todo, Category) {
+  .controller('TodoController', ['$scope', '$state', 'Todo', 'Category', 'PDFService', function($scope,
+                                                                      $state, Todo, Category, PDFService) {
     $scope.todos = [];
     $scope.getTodos = function() {
       Todo
@@ -77,4 +77,8 @@ angular
         return false;
       }
     };
+
+    $scope.generatePDF = function(todo) {
+      PDFService.generate(todo);
+    }
   }]);
