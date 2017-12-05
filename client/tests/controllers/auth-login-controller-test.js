@@ -1,5 +1,5 @@
 describe('login controller tests', function () {
-  var $rootScope, controller, scope, state, deferred, authServiceMock;
+  var $rootScope, controller, scope, state, deferred, authServiceMock, messagingMock, eventsMock;
 
   beforeEach(angular.mock.module('app'));
 
@@ -30,10 +30,20 @@ describe('login controller tests', function () {
       go: function(to) {}
     };
 
+    messagingMock = {
+      publish: function() {}
+    };
+
+    eventsMock = {
+      message: {_CLEAR_NOTIFICATIONS_: null}
+    }
+
     controller = $controller('AuthLoginController', {
       $scope: scope,
       AuthService: authServiceMock,
-      $state: state
+      $state: state,
+      messaging: messagingMock,
+      events: eventsMock
     });
 
   }));
@@ -75,6 +85,52 @@ describe('login controller tests', function () {
 
     expect(state.go).not.toHaveBeenCalled();
   });
+
+  // $scope.register = function() {
+  //   AuthService.register($scope.user.email, $scope.user.password)
+  //     .then(function() {
+  //       $state.go('login');
+  //     }, function(err) {
+  //       console.log('Error: ' + err);
+  //     })
+  // }
+
+  it('should set state to login when register succeeds', function() {
+    spyOn(state, 'go').and.callThrough();
+
+    scope.register();
+
+    deferred.resolve();
+
+    scope.$apply();
+
+    expect(state.go).toHaveBeenCalledWith('login');
+  })
+
+  it('should not set state to login when register fails', function() {
+    spyOn(state, 'go').and.callThrough();
+
+    scope.register();
+
+    deferred.reject();
+
+    scope.$apply();
+
+    expect(state.go).not.toHaveBeenCalled();
+  })
+
+  // $scope.init = function() {
+  //   if ($state.current.name == 'login' || $state.current.name == 'register') {
+  //     messaging.publish(events.message._CLEAR_NOTIFICATIONS_);
+  //   }
+  // }
+
+  it('init should publish CLEAR_NOTIFICATIONS message', function() {
+    spyOn(messagingMock, 'publish');
+    state.current.name = 'login';
+    scope.init();
+    expect(messagingMock.publish).toHaveBeenCalledWith(eventsMock.message._CLEAR_NOTIFICATIONS_);
+  })
 
 });
 

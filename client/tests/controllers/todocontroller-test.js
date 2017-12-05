@@ -1,5 +1,5 @@
 describe('todo controller tests', function(){
-  var scope, state, controller, categoryMock, todoMock, findDeferred, findCategoryDeferred, createDeferred, findOneDeferred, deleteDeferred, updateDeferred, createDeferred;
+  var scope, state, controller, categoryMock, todoMock, findDeferred, findCategoryDeferred, createDeferred, findOneDeferred, deleteDeferred, updateDeferred, createDeferred, pdfServiceMock;
 
   beforeEach(angular.mock.module('app'));
 
@@ -35,10 +35,13 @@ describe('todo controller tests', function(){
         }
         return {$promise: updateDeferred.promise};
       }
+    };
+    pdfServiceMock = {
+      generate: function(todo) {}
     }
 
     categoryMock = {
-      find : function() {
+      find : function(a) {
         findCategoryDeferred = $q.defer();
         return {$promise: findCategoryDeferred.promise};
       }
@@ -51,14 +54,16 @@ describe('todo controller tests', function(){
       $scope: scope,
       $state: state,
       Todo: todoMock,
-      Category: categoryMock
+      Category: categoryMock,
+      PDFService: pdfServiceMock
     });
 
   }));
 
   it('should pass this canary test', function() {
     expect(true).toEqual(true);
-  })
+  });
+
   it('categories should be empty on create', function() {
     expect(scope.todos).toEqual([]);
   });
@@ -125,17 +130,17 @@ describe('todo controller tests', function(){
     updateDeferred.reject();
     scope.$root.$digest();
     expect(scope.todos[0].content).toBe('blah');
-  })
+  });
 
   it('startEdit should set editedCategory to the category', function() {
     scope.startEdit({category: {name: 'a'}});
     expect(scope.editedTodo).toEqual({category: {name: 'a'}});
-  })
+  });
 
   it('cancelEdit should set the editedCategory to null', function() {
     scope.cancelEdit();
     expect(scope.editedTodo).toEqual(null);
-  })
+  });
 
   it('cancelEdit should set the category to null', function() {
     scope.category = {a: 'a'};
@@ -145,7 +150,40 @@ describe('todo controller tests', function(){
     expect (scope.category).toBeNull();
     expect (scope.editedTodo).toBeNull();
 
+  });
+
+
+  it('canEdit should return true if item owner is current user', function() {
+    var item = {ownerId: 1};
+    scope.currentUser = {id: 1};
+    expect (scope.canEdit(item)).toEqual(true);
   })
 
+  it('canEdit should return false if item owner is not current user', function() {
+    var item = {ownerId: 1};
+    scope.currentUser = {id: 2};
+    expect (scope.canEdit(item)).toEqual(false);
+  });
+
+  it('generatePDF should interact with the PDFService', function() {
+    spyOn(pdfServiceMock, 'generate');
+    var todo = {};
+    scope.generatePDF(todo);
+    expect (pdfServiceMock.generate).toHaveBeenCalled();
+  });
+
+  it('findAvailableCategories should set available categories in the scope', function() {
+    scope.findAvailableCategories();
+    findCategoryDeferred.resolve([{todos: {length: 0}}, {todos: {length: 0}}]);
+    scope.$root.$digest();
+    expect(scope.availableCategories.length).toBe(2);
+  });
+
+  it('findAvailableCategories should set no available categories in the scope if there arent any', function() {
+    scope.findAvailableCategories();
+    findCategoryDeferred.resolve([{todos: {length: 1}}]);
+    scope.$root.$digest();
+    expect(scope.availableCategories.length).toBe(0);
+  })
 });
 

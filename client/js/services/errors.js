@@ -3,7 +3,6 @@ angular.module('app')
     var errorMessages = [];
 
     var addErrorMessageHandler = function(message, type){
-      console.log('In errors, addErrorMessageHandler called with message ', message, 'and type ', type);
       if(!errorMessages){
         errorMessages = [];
       }
@@ -25,7 +24,6 @@ angular.module('app')
     messaging.subscribe(events.message._CLEAR_ERROR_MESSAGES_, clearErrorMessagesHandler);
 
     var init = function(){
-      console.log('initialising errors service');
       errorMessages = [];
     };
 
