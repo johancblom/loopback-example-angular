@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: 'client/',
 
 
     // frameworks to use
@@ -15,17 +15,18 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'client/vendor/angular/angular.js',
-      'client/vendor/angular-mocks/angular-mocks.js',
-      'client/vendor/angular-resource/angular-resource.js',
-      'client/vendor/angular-ui-router/release/angular-ui-router.js',
-      'client/vendor/angular-messages/angular-messages.js',
-      'client/vendor/jquery/dist/jquery.js',
-      'client/vendor/angular-tooltips/dist/angular-tooltips.js',
-      'client/vendor/angular-cookies/angular-cookies.js',
-      'client/vendor/angularLocalStorage/src/angularLocalStorage.js',
-      'client/js/**/*.js',
-      'client/tests/**/*.js'
+      'vendor/jquery/dist/jquery.js',
+      'vendor/angular/angular.js',
+      'vendor/angular-mocks/angular-mocks.js',
+      'vendor/angular-resource/angular-resource.js',
+      'vendor/angular-ui-router/release/angular-ui-router.js',
+      'vendor/angular-messages/angular-messages.js',
+      'vendor/angular-tooltips/dist/angular-tooltips.js',
+      'vendor/angular-cookies/angular-cookies.js',
+      'vendor/angularLocalStorage/src/angularLocalStorage.js',
+      'js/**/*.js',
+      'tests/**/*.js',
+      'js/directives/dialog/*.html'
     ],
 
 
@@ -37,9 +38,9 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'client/js/**/*.js': ['coverage']
+      'js/**/*.js': ['coverage'],
+      'js/directives/**/*.html': ['ng-html2js']
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

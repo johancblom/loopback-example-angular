@@ -5,7 +5,6 @@ angular.module('app')
 		replace: true,
 		templateUrl: 'js/directives/dialog/dialog.html',
 		link: function(scope, element) {
-      element.hide();
 
       scope.modalType = 'popup';
       scope.message = '';
