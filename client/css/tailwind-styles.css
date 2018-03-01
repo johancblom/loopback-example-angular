@@ -1,0 +1,8 @@
+@tailwind preflight;
+
+a {
+  text-decoration: none;
+  @apply text-teal;
+}
+
+@tailwind utilities;

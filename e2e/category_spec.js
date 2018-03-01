@@ -13,7 +13,6 @@ beforeAll(function(done) {
   });
 
   browser.get('http://localhost:4000/#!/login');
-  // browser.sleep(10000);
   element(by.model('user.email')).clear();
   element(by.model('user.password')).clear();
   element(by.model('user.email')).sendKeys('foo@bar.com');
@@ -41,10 +40,8 @@ describe('category page', function() {
     element(by.model('user.email')).sendKeys('foo@bar.com');
     element(by.model('user.password')).sendKeys('foobar');
     var loginBtn = element(by.css('.login-button'));
-    browser.sleep(500);
     loginBtn.click();
     element(by.css('[ui-sref="category"]')).click();
-    browser.sleep(500);
     var createBtn = element(by.buttonText('Create'));
     expect(createBtn.getText()).toContain('Create');
   });
