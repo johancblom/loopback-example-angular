@@ -41,7 +41,6 @@ angular
     };
 
     $scope.updateTodo = function(item) {
-      console.log(item);
       Todo
         .upsert({id: $scope.editedTodo.id, categoryId: $scope.category.id, content: item.content})
         .$promise
@@ -59,9 +58,13 @@ angular
       $scope.category = todo.category;
     };
 
-    Category.find({filter: {'include': 'todos'}}).$promise.then(function (results) {
-      $scope.availableCategories = results.filter(function(item) { return item.todos.length == 0}) ;
-    });
+    $scope.findAvailableCategories = function() {
+      Category.find({filter: {'include': 'todos'}}).$promise.then(function (results) {
+        $scope.availableCategories = results.filter(function(item) { return item.todos.length == 0}) ;
+      });
+    };
+
+    $scope.findAvailableCategories();
 
     $scope.cancelEdit = function() {
       $scope.editedTodo = null;
@@ -69,7 +72,6 @@ angular
     };
 
     $scope.canEdit = function(item) {
-      console.log(item.ownerId, " ", $scope.currentUser);
       if (item.ownerId == $scope.currentUser.id) {
         return true;
       }

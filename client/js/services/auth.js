@@ -35,7 +35,6 @@ angular
       messaging.publish(events.message._DISPLAY_DIALOG_, [message, 'popup']);
 
       messaging.subscribe(events.message._USER_RESPONDED_, function(answer) {
-        console.log(answer);
         if (answer == "OK") {
           User.logout().$promise.then(function () {
             defer.resolve();
@@ -66,7 +65,6 @@ angular
         })
         .$promise
         .then(function() {}, function(err) {
-          console.log(err);
           if((err.data.error.message) && (err.data.error.message).includes('Email already exists')) {
             messaging.publish(events.message._ADD_ERROR_MESSAGE_, ['That email address is already in use, please login instead (click Cancel)', 'alert.warning']);
 

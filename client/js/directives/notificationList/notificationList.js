@@ -8,9 +8,7 @@ angular.module('app')
       scope.notifications = [];
 
       var findNotification = function(txt, array) {
-        console.log('finding ',txt, ' in ', array);
         for (var i=0; i< array.length; i++) {
-          console.log("array ", i, " message: ", array[i].message, " ", txt);
           if (array[i].message == txt) {
             return true;
           }
@@ -23,7 +21,6 @@ angular.module('app')
         if(!scope.notifications){
           scope.notifications = [];
         }
-        console.log(errorMessages);
         if (errorMessages != undefined) {
           result = findNotification(errorMessages.message, scope.notifications);
         }

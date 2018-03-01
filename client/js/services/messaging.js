@@ -2,7 +2,6 @@ angular.module('app').factory('messaging', function () {
   var cache = {};
 
   var subscribe = function (topic, callback) {
-    console.log('someone subscribed to topic ', topic);
     if (!cache[topic]) {
       cache[topic] = [];
     }
@@ -11,7 +10,6 @@ angular.module('app').factory('messaging', function () {
   };
 
   var publish = function (topic, args) {
-    console.log('someone published topic ', topic);
     if (cache[topic]) {
       angular.forEach(cache[topic], function (callback) {
         callback.apply(null, args || []);

@@ -5,10 +5,10 @@ angular.module('app')
 		replace: true,
 		templateUrl: 'js/directives/dialog/dialog.html',
 		link: function(scope, element) {
-      element.hide();
 
       scope.modalType = 'popup';
       scope.message = '';
+      element.hide();
 
       var showPopupHandler = function (messageText) {
         console.log('got the request start notification, show the element');
