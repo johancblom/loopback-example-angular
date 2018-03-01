@@ -590,7 +590,7 @@ a {
   font-size: .875rem;
   margin-right: 1rem;
   font-weight: 600;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
   border-bottom-width: 2px;
   border-style: solid;
   border-color: transparent;
@@ -599,6 +599,10 @@ a {
 .top-nav-item:hover {
   color: #4dc0b5;
   border-color: #4dc0b5;
+}
+
+.hero {
+  background: url('/img/tailwind.jpg');
 }
 
 .container {
@@ -2538,6 +2542,10 @@ a {
 
 .h-64 {
   height: 16rem;
+}
+
+.h-112 {
+  height: 28rem;
 }
 
 .h-auto {
@@ -6418,6 +6426,10 @@ a {
     height: 16rem;
   }
 
+  .sm\:h-112 {
+    height: 28rem;
+  }
+
   .sm\:h-auto {
     height: auto;
   }
@@ -10287,6 +10299,10 @@ a {
 
   .md\:h-64 {
     height: 16rem;
+  }
+
+  .md\:h-112 {
+    height: 28rem;
   }
 
   .md\:h-auto {
@@ -14160,6 +14176,10 @@ a {
     height: 16rem;
   }
 
+  .lg\:h-112 {
+    height: 28rem;
+  }
+
   .lg\:h-auto {
     height: auto;
   }
@@ -18029,6 +18049,10 @@ a {
 
   .xl\:h-64 {
     height: 16rem;
+  }
+
+  .xl\:h-112 {
+    height: 28rem;
   }
 
   .xl\:h-auto {
