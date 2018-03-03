@@ -31,8 +31,9 @@
 <div class="hero h-64 bg-cover h-112"></div>
 
 <div class="bg-white shadow py-3">
-  <div class="container mx-auto flex items-center">
-    <div class="w-1/4">Lorem ipsum dolor sit amet.
+  <div class="container mx-auto flex items-center relative">
+    <div class="w-1/4">
+      <img src="/img/tailwind_logo.jpg" alt="logo" class="rounded-full h-48 w-48 absolute pin-l pin-t -mt-24">
     </div>
     <div class="w-1/2">
       <ul class="list-reset flex">
@@ -41,25 +42,25 @@
           <div class="text-sm font-bold tracking-tight mb-1">Tweets</div>
           <div class="text-lg tracking-tight font-bold text-teal ">60</div>
         </a></li>
-        <li class="text-center py-3 px-4 border-b-2 border-solid">
+        <li class="text-center py-3 px-4 border-b-2 border-solid hover:border-teal">
           <a href="#" class="text-grey-darker hover:no-underline">
             <div  class="text-sm font-bold tracking-tight mb-1">Following</div>
-            <div class="text-lg tracking-tight font-bold text-teal ">4</div>
+            <div class="text-lg tracking-tight font-bold hover:text-teal ">4</div>
           </a></li>
-        <li class="text-center py-3 px-4 border-b-2 border-solid">
+        <li class="text-center py-3 px-4 border-b-2 border-solid hover:border-teal">
           <a href="#"  class="text-grey-darker hover:no-underline">
             <div  class="text-sm font-bold tracking-tight mb-1">Followers</div>
-            <div class="text-lg tracking-tight font-bold text-teal ">3,810</div>
+            <div class="text-lg tracking-tight font-bold hover:text-teal ">3,810</div>
           </a></li>
-        <li class="text-center py-3 px-4 border-b-2 border-solid">
+        <li class="text-center py-3 px-4 border-b-2 border-solid hover:border-teal">
           <a href="#"  class="text-grey-darker hover:no-underline">
             <div  class="text-sm font-bold tracking-tight mb-1">Likes</div>
-            <div class="text-lg tracking-tight font-bold text-teal ">9</div>
+            <div class="text-lg tracking-tight font-bold hover:text-teal ">9</div>
           </a></li>
-        <li class="text-center py-3 px-4 border-b-2 border-solid">
+        <li class="text-center py-3 px-4 border-b-2 border-solid hover:border-teal">
           <a href="#"  class="text-grey-darker hover:no-underline">
             <div  class="text-sm font-bold tracking-tight mb-1">Moments</div>
-            <div class="text-lg tracking-tight font-bold text-teal ">1</div>
+            <div class="text-lg tracking-tight font-bold hover:text-teal ">1</div>
           </a></li>
       </ul>
     </div>
@@ -72,6 +73,57 @@
       </div>
     </div>
   </div>
+</div>
+<div class="container mx-auto flex mt-3 text-sm leading-normal">
+  <div class="w-1/4 pr-6 mt-8 mb-4">
+    <h1><a href="#" class="text-black">Tailwind CSS</a></h1>
+    <div class="mb-4"><a href="#" class="text-grey-darker">@tailwindcss</a></div>
+    <div class="mb-4">
+      A utility-first CSS framework for rapid UI development. By <a href="#">@adamwathan</a>, <a href="#">@reinink</a>, <a href="#">@davidhemphill</a>, and <a href="#" >@</s>steveschoger</a>.
+    </div>
+    <div class="mb-2"><i class="fa fa-link fa-lg text-grey-darker mr-1"></i><a href="#">tailwindcss.com</a></div>
+    <div class="mb-4"><i class="fa fa-calendar fa-lg text-grey-darker mr-1"></i><a href="#" class="text-black">Joined August 2017</a></div>
+
+    <div class="mb-4">
+      <button class="bg-teal hover:bg-teal-dark text-white font-medium py-2 px-4 rounded-full w-full h-10">Tweet to Tailwind CSS</button>
+    </div>
+    <div class="mb-4"><i class="fa fa-user fa-lg text-grey-dark mr-1"></i><a href="#">27 Followers you know</a></div>
+
+    <div class="mb-4">
+      <a href="#"><img src="/img/tailwind.jpg" alt="avatar" class="rounded-full h-12 w-12"></a>
+    </div>
+    <div class="mb-4"><i class="fa fa-picture-o fa-lg text-grey-dark mr-1"></i><a href="#">Photos and videos</a></div>
+    <div class="mb-4">
+      <a href="#"><img src="/img/photo01.jpg" alt="photo" class="h-20 w-20 mr-1 mb-1"</a>
+      <a href="#"><img src="/img/photo01.jpg" alt="photo" class="h-20 w-20 mr-1 mb-1"</a>
+      <a href="#"><img src="/img/photo01.jpg" alt="photo" class="h-20 w-20 mr-1 mb-1"</a>
+      <a href="#"><img src="/img/photo01.jpg" alt="photo" class="h-20 w-20 mr-1 mb-1"</a>
+      <a href="#"><img src="/img/photo01.jpg" alt="photo" class="h-20 w-20 mr-1 mb-1"</a>
+    </div>
+
+  </div>
+
+  <div class="w-1/2 bg-white mb-4">
+    <div class="p-3 text-lg font-bold border-b border-sold border-grey-light">
+      <a href="#" class="text-black mr6">
+        Tweets
+      </a>
+      <a href="#" class="mr-6">
+        Tweets &amp; Replies
+      </a>
+      <a href="#">
+        Media
+      </a>
+    </div>
+    <div class="flex border-b border-solid border-grey-light">
+      <div class="w-1/8 text-right pl-3 pt-3" >
+        <div><i class="fa fa-thumb-tack text-teal mr-2"></i></div>
+      </div>
+      <div class="w-7/8">Lorem ipsum dolor sit amet.</div>
+    </div>
+  </div>
+  <div class="w-1/4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis eos error est mollitia nulla ut. Accusantium animi atque aut delectus eveniet, ex illum, laborum, laudantium nostrum perspiciatis praesentium quis vero?</div>
+
 </div>
 </body>
 </html>

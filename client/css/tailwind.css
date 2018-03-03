@@ -532,42 +532,12 @@ ul {
  * Tailwind custom reset styles
  */
 
-/**
- * Allow adding a border to an element by just adding a border-width.
- *
- * By default, the way the browser specifies that an element should have no
- * border is by setting it's border-style to `none` in the user-agent
- * stylesheet.
- *
- * In order to easily add borders to elements by just setting the `border-width`
- * property, we change the default border-style for all elements to `solid`, and
- * use border-width to hide them instead. This way our `border` utilities only
- * need to set the `border-width` property instead of the entire `border`
- * shorthand, making our border utilities much more straightforward to compose.
- *
- * https://github.com/tailwindcss/tailwindcss/pull/116
- */
-
 *,
 *::before,
 *::after {
   border-width: 0;
   border-style: solid;
   border-color: #dae1e7;
-}
-
-/**
- * Undo the `border-style: none` reset that Normalize applies to images so that
- * our `border-{width}` utilities have the expected effect.
- *
- * The Normalize reset is unnecessary for us since we default the border-width
- * to 0 on all elements.
- *
- * https://github.com/tailwindcss/tailwindcss/issues/362
- */
-
-img {
-  border-style: solid;
 }
 
 /**
@@ -615,6 +585,10 @@ a {
   color: #4dc0b5;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 .top-nav-item {
   color: #606f7b;
   font-size: .875rem;
@@ -627,6 +601,7 @@ a {
 }
 
 .top-nav-item:hover {
+  text-decoration: none;
   color: #4dc0b5;
   border-color: #4dc0b5;
 }
@@ -2558,6 +2533,10 @@ a {
   height: 4rem;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .h-24 {
   height: 6rem;
 }
@@ -2572,6 +2551,10 @@ a {
 
 .h-64 {
   height: 16rem;
+}
+
+.h-112 {
+  height: 28rem;
 }
 
 .h-auto {
@@ -2632,6 +2615,10 @@ a {
 
 .m-8 {
   margin: 2rem;
+}
+
+.m-24 {
+  margin: 6rem;
 }
 
 .m-auto {
@@ -2710,6 +2697,16 @@ a {
 .mx-8 {
   margin-left: 2rem;
   margin-right: 2rem;
+}
+
+.my-24 {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
+.mx-24 {
+  margin-left: 6rem;
+  margin-right: 6rem;
 }
 
 .my-auto {
@@ -2844,6 +2841,22 @@ a {
   margin-left: 2rem;
 }
 
+.mt-24 {
+  margin-top: 6rem;
+}
+
+.mr-24 {
+  margin-right: 6rem;
+}
+
+.mb-24 {
+  margin-bottom: 6rem;
+}
+
+.ml-24 {
+  margin-left: 6rem;
+}
+
 .mt-auto {
   margin-top: auto;
 }
@@ -2972,6 +2985,10 @@ a {
   margin: -2rem;
 }
 
+.-m-24 {
+  margin: -6rem;
+}
+
 .-m-px {
   margin: -1px;
 }
@@ -3044,6 +3061,16 @@ a {
 .-mx-8 {
   margin-left: -2rem;
   margin-right: -2rem;
+}
+
+.-my-24 {
+  margin-top: -6rem;
+  margin-bottom: -6rem;
+}
+
+.-mx-24 {
+  margin-left: -6rem;
+  margin-right: -6rem;
 }
 
 .-my-px {
@@ -3166,6 +3193,22 @@ a {
 
 .-ml-8 {
   margin-left: -2rem;
+}
+
+.-mt-24 {
+  margin-top: -6rem;
+}
+
+.-mr-24 {
+  margin-right: -6rem;
+}
+
+.-mb-24 {
+  margin-bottom: -6rem;
+}
+
+.-ml-24 {
+  margin-left: -6rem;
 }
 
 .-mt-px {
@@ -4436,6 +4479,10 @@ a {
   width: 4rem;
 }
 
+.w-20 {
+  width: 5rem;
+}
+
 .w-24 {
   width: 6rem;
 }
@@ -4502,6 +4549,14 @@ a {
 
 .w-5\/6 {
   width: 83.33333%;
+}
+
+.w-1\/8 {
+  width: 12.5%;
+}
+
+.w-7\/8 {
+  width: 87.5%;
 }
 
 .w-full {
@@ -6436,6 +6491,10 @@ a {
     height: 4rem;
   }
 
+  .sm\:h-20 {
+    height: 5rem;
+  }
+
   .sm\:h-24 {
     height: 6rem;
   }
@@ -6450,6 +6509,10 @@ a {
 
   .sm\:h-64 {
     height: 16rem;
+  }
+
+  .sm\:h-112 {
+    height: 28rem;
   }
 
   .sm\:h-auto {
@@ -6510,6 +6573,10 @@ a {
 
   .sm\:m-8 {
     margin: 2rem;
+  }
+
+  .sm\:m-24 {
+    margin: 6rem;
   }
 
   .sm\:m-auto {
@@ -6588,6 +6655,16 @@ a {
   .sm\:mx-8 {
     margin-left: 2rem;
     margin-right: 2rem;
+  }
+
+  .sm\:my-24 {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+
+  .sm\:mx-24 {
+    margin-left: 6rem;
+    margin-right: 6rem;
   }
 
   .sm\:my-auto {
@@ -6722,6 +6799,22 @@ a {
     margin-left: 2rem;
   }
 
+  .sm\:mt-24 {
+    margin-top: 6rem;
+  }
+
+  .sm\:mr-24 {
+    margin-right: 6rem;
+  }
+
+  .sm\:mb-24 {
+    margin-bottom: 6rem;
+  }
+
+  .sm\:ml-24 {
+    margin-left: 6rem;
+  }
+
   .sm\:mt-auto {
     margin-top: auto;
   }
@@ -6850,6 +6943,10 @@ a {
     margin: -2rem;
   }
 
+  .sm\:-m-24 {
+    margin: -6rem;
+  }
+
   .sm\:-m-px {
     margin: -1px;
   }
@@ -6922,6 +7019,16 @@ a {
   .sm\:-mx-8 {
     margin-left: -2rem;
     margin-right: -2rem;
+  }
+
+  .sm\:-my-24 {
+    margin-top: -6rem;
+    margin-bottom: -6rem;
+  }
+
+  .sm\:-mx-24 {
+    margin-left: -6rem;
+    margin-right: -6rem;
   }
 
   .sm\:-my-px {
@@ -7044,6 +7151,22 @@ a {
 
   .sm\:-ml-8 {
     margin-left: -2rem;
+  }
+
+  .sm\:-mt-24 {
+    margin-top: -6rem;
+  }
+
+  .sm\:-mr-24 {
+    margin-right: -6rem;
+  }
+
+  .sm\:-mb-24 {
+    margin-bottom: -6rem;
+  }
+
+  .sm\:-ml-24 {
+    margin-left: -6rem;
   }
 
   .sm\:-mt-px {
@@ -8306,6 +8429,10 @@ a {
     width: 4rem;
   }
 
+  .sm\:w-20 {
+    width: 5rem;
+  }
+
   .sm\:w-24 {
     width: 6rem;
   }
@@ -8372,6 +8499,14 @@ a {
 
   .sm\:w-5\/6 {
     width: 83.33333%;
+  }
+
+  .sm\:w-1\/8 {
+    width: 12.5%;
+  }
+
+  .sm\:w-7\/8 {
+    width: 87.5%;
   }
 
   .sm\:w-full {
@@ -10307,6 +10442,10 @@ a {
     height: 4rem;
   }
 
+  .md\:h-20 {
+    height: 5rem;
+  }
+
   .md\:h-24 {
     height: 6rem;
   }
@@ -10321,6 +10460,10 @@ a {
 
   .md\:h-64 {
     height: 16rem;
+  }
+
+  .md\:h-112 {
+    height: 28rem;
   }
 
   .md\:h-auto {
@@ -10381,6 +10524,10 @@ a {
 
   .md\:m-8 {
     margin: 2rem;
+  }
+
+  .md\:m-24 {
+    margin: 6rem;
   }
 
   .md\:m-auto {
@@ -10459,6 +10606,16 @@ a {
   .md\:mx-8 {
     margin-left: 2rem;
     margin-right: 2rem;
+  }
+
+  .md\:my-24 {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+
+  .md\:mx-24 {
+    margin-left: 6rem;
+    margin-right: 6rem;
   }
 
   .md\:my-auto {
@@ -10593,6 +10750,22 @@ a {
     margin-left: 2rem;
   }
 
+  .md\:mt-24 {
+    margin-top: 6rem;
+  }
+
+  .md\:mr-24 {
+    margin-right: 6rem;
+  }
+
+  .md\:mb-24 {
+    margin-bottom: 6rem;
+  }
+
+  .md\:ml-24 {
+    margin-left: 6rem;
+  }
+
   .md\:mt-auto {
     margin-top: auto;
   }
@@ -10721,6 +10894,10 @@ a {
     margin: -2rem;
   }
 
+  .md\:-m-24 {
+    margin: -6rem;
+  }
+
   .md\:-m-px {
     margin: -1px;
   }
@@ -10793,6 +10970,16 @@ a {
   .md\:-mx-8 {
     margin-left: -2rem;
     margin-right: -2rem;
+  }
+
+  .md\:-my-24 {
+    margin-top: -6rem;
+    margin-bottom: -6rem;
+  }
+
+  .md\:-mx-24 {
+    margin-left: -6rem;
+    margin-right: -6rem;
   }
 
   .md\:-my-px {
@@ -10915,6 +11102,22 @@ a {
 
   .md\:-ml-8 {
     margin-left: -2rem;
+  }
+
+  .md\:-mt-24 {
+    margin-top: -6rem;
+  }
+
+  .md\:-mr-24 {
+    margin-right: -6rem;
+  }
+
+  .md\:-mb-24 {
+    margin-bottom: -6rem;
+  }
+
+  .md\:-ml-24 {
+    margin-left: -6rem;
   }
 
   .md\:-mt-px {
@@ -12177,6 +12380,10 @@ a {
     width: 4rem;
   }
 
+  .md\:w-20 {
+    width: 5rem;
+  }
+
   .md\:w-24 {
     width: 6rem;
   }
@@ -12243,6 +12450,14 @@ a {
 
   .md\:w-5\/6 {
     width: 83.33333%;
+  }
+
+  .md\:w-1\/8 {
+    width: 12.5%;
+  }
+
+  .md\:w-7\/8 {
+    width: 87.5%;
   }
 
   .md\:w-full {
@@ -14178,6 +14393,10 @@ a {
     height: 4rem;
   }
 
+  .lg\:h-20 {
+    height: 5rem;
+  }
+
   .lg\:h-24 {
     height: 6rem;
   }
@@ -14192,6 +14411,10 @@ a {
 
   .lg\:h-64 {
     height: 16rem;
+  }
+
+  .lg\:h-112 {
+    height: 28rem;
   }
 
   .lg\:h-auto {
@@ -14252,6 +14475,10 @@ a {
 
   .lg\:m-8 {
     margin: 2rem;
+  }
+
+  .lg\:m-24 {
+    margin: 6rem;
   }
 
   .lg\:m-auto {
@@ -14330,6 +14557,16 @@ a {
   .lg\:mx-8 {
     margin-left: 2rem;
     margin-right: 2rem;
+  }
+
+  .lg\:my-24 {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+
+  .lg\:mx-24 {
+    margin-left: 6rem;
+    margin-right: 6rem;
   }
 
   .lg\:my-auto {
@@ -14464,6 +14701,22 @@ a {
     margin-left: 2rem;
   }
 
+  .lg\:mt-24 {
+    margin-top: 6rem;
+  }
+
+  .lg\:mr-24 {
+    margin-right: 6rem;
+  }
+
+  .lg\:mb-24 {
+    margin-bottom: 6rem;
+  }
+
+  .lg\:ml-24 {
+    margin-left: 6rem;
+  }
+
   .lg\:mt-auto {
     margin-top: auto;
   }
@@ -14592,6 +14845,10 @@ a {
     margin: -2rem;
   }
 
+  .lg\:-m-24 {
+    margin: -6rem;
+  }
+
   .lg\:-m-px {
     margin: -1px;
   }
@@ -14664,6 +14921,16 @@ a {
   .lg\:-mx-8 {
     margin-left: -2rem;
     margin-right: -2rem;
+  }
+
+  .lg\:-my-24 {
+    margin-top: -6rem;
+    margin-bottom: -6rem;
+  }
+
+  .lg\:-mx-24 {
+    margin-left: -6rem;
+    margin-right: -6rem;
   }
 
   .lg\:-my-px {
@@ -14786,6 +15053,22 @@ a {
 
   .lg\:-ml-8 {
     margin-left: -2rem;
+  }
+
+  .lg\:-mt-24 {
+    margin-top: -6rem;
+  }
+
+  .lg\:-mr-24 {
+    margin-right: -6rem;
+  }
+
+  .lg\:-mb-24 {
+    margin-bottom: -6rem;
+  }
+
+  .lg\:-ml-24 {
+    margin-left: -6rem;
   }
 
   .lg\:-mt-px {
@@ -16048,6 +16331,10 @@ a {
     width: 4rem;
   }
 
+  .lg\:w-20 {
+    width: 5rem;
+  }
+
   .lg\:w-24 {
     width: 6rem;
   }
@@ -16114,6 +16401,14 @@ a {
 
   .lg\:w-5\/6 {
     width: 83.33333%;
+  }
+
+  .lg\:w-1\/8 {
+    width: 12.5%;
+  }
+
+  .lg\:w-7\/8 {
+    width: 87.5%;
   }
 
   .lg\:w-full {
@@ -18049,6 +18344,10 @@ a {
     height: 4rem;
   }
 
+  .xl\:h-20 {
+    height: 5rem;
+  }
+
   .xl\:h-24 {
     height: 6rem;
   }
@@ -18063,6 +18362,10 @@ a {
 
   .xl\:h-64 {
     height: 16rem;
+  }
+
+  .xl\:h-112 {
+    height: 28rem;
   }
 
   .xl\:h-auto {
@@ -18123,6 +18426,10 @@ a {
 
   .xl\:m-8 {
     margin: 2rem;
+  }
+
+  .xl\:m-24 {
+    margin: 6rem;
   }
 
   .xl\:m-auto {
@@ -18201,6 +18508,16 @@ a {
   .xl\:mx-8 {
     margin-left: 2rem;
     margin-right: 2rem;
+  }
+
+  .xl\:my-24 {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+
+  .xl\:mx-24 {
+    margin-left: 6rem;
+    margin-right: 6rem;
   }
 
   .xl\:my-auto {
@@ -18335,6 +18652,22 @@ a {
     margin-left: 2rem;
   }
 
+  .xl\:mt-24 {
+    margin-top: 6rem;
+  }
+
+  .xl\:mr-24 {
+    margin-right: 6rem;
+  }
+
+  .xl\:mb-24 {
+    margin-bottom: 6rem;
+  }
+
+  .xl\:ml-24 {
+    margin-left: 6rem;
+  }
+
   .xl\:mt-auto {
     margin-top: auto;
   }
@@ -18463,6 +18796,10 @@ a {
     margin: -2rem;
   }
 
+  .xl\:-m-24 {
+    margin: -6rem;
+  }
+
   .xl\:-m-px {
     margin: -1px;
   }
@@ -18535,6 +18872,16 @@ a {
   .xl\:-mx-8 {
     margin-left: -2rem;
     margin-right: -2rem;
+  }
+
+  .xl\:-my-24 {
+    margin-top: -6rem;
+    margin-bottom: -6rem;
+  }
+
+  .xl\:-mx-24 {
+    margin-left: -6rem;
+    margin-right: -6rem;
   }
 
   .xl\:-my-px {
@@ -18657,6 +19004,22 @@ a {
 
   .xl\:-ml-8 {
     margin-left: -2rem;
+  }
+
+  .xl\:-mt-24 {
+    margin-top: -6rem;
+  }
+
+  .xl\:-mr-24 {
+    margin-right: -6rem;
+  }
+
+  .xl\:-mb-24 {
+    margin-bottom: -6rem;
+  }
+
+  .xl\:-ml-24 {
+    margin-left: -6rem;
   }
 
   .xl\:-mt-px {
@@ -19919,6 +20282,10 @@ a {
     width: 4rem;
   }
 
+  .xl\:w-20 {
+    width: 5rem;
+  }
+
   .xl\:w-24 {
     width: 6rem;
   }
@@ -19985,6 +20352,14 @@ a {
 
   .xl\:w-5\/6 {
     width: 83.33333%;
+  }
+
+  .xl\:w-1\/8 {
+    width: 12.5%;
+  }
+
+  .xl\:w-7\/8 {
+    width: 87.5%;
   }
 
   .xl\:w-full {
