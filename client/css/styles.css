@@ -53,3 +53,8 @@ label.col-form-label {
   overflow: auto;
   background-color: rgba(0,0,0,0.5);
 }
+
+.container .row {
+  margin-left: 0;
+  margin-right: 0;
+}
