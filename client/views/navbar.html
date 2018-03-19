@@ -1,24 +1,37 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+<nav class="teal">
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active" ui-sref-active="active"><a ui-sref="todo">Todos <span class="sr-only">(current)</span></a></li>
-        <li ui-sref-active="active"><a ui-sref="category">Categories</a></li>
+    <div class="nav-wrapper">
+      <a href="" class="button-collapse teal" data-activates="bs-example-navbar-collapse-1" aria-expanded="false">
+        <i class="material-icons">menu</i>
+      </a>
+      <ul class="hide-on-med-and-down ">
+        <li ui-sref-active="active">
+          <a ui-sref="todo">Todos</a>
+        </li>
+        <li class="active" ui-sref-active="active">
+          <a ui-sref="category">Categories</a>
+        </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="right">
         <li ng-if="currentUser"><a ui-sref="logout" tooltips tooltip-template="Log out?">Logged in as: {{currentUser.email}}</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
+    </div>
+
+    <ul class="side-nav"  id="bs-example-navbar-collapse-1">
+      <li class="active" ui-sref-active="active"><a ui-sref="todo">Todos</a></li>
+      <li ui-sref-active="active"><a ui-sref="category">Categories</a></li>
+    </ul>
+    <!--</div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
   </div><!-- /.container-fluid -->
 </nav>
+<script>
+  $(document).ready(function () {
+
+    // JAVASCRIPT START HERE //
+    $('.button-collapse').sideNav();
+
+
+
+  });
+</script>
