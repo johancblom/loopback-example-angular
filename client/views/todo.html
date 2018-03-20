@@ -5,12 +5,12 @@
     </div>
     <hr class="col s12">
     <div class="col s12">
-      <table id="todoTable" class="table table-striped table-bordered">
+      <table id="todoTable">
         <thead>
         <tr>
-          <th class="col s6">Content</th>
-          <th class="col s4">Category</th>
-          <th class="col s2">Actions</th>
+          <th>Content</th>
+          <th>Category</th>
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -30,9 +30,11 @@
           </td>
         </tr>
         <tr ng-class="{danger: editedTodo}">
-          <td><input ng-model="editedTodo.content" name="content" required/></td>
-          <td><select ng-model="category"
-                      ng-options="category as category.name for category in availableCategories track by category.id" required/>
+          <td class="input-field"><input ng-model="editedTodo.content" name="content" placeholder="content" required/></td>
+          <td class="input-field">
+            <select class="" ng-model="category" material-select watch required>
+              <option ng-repeat="category in availableCategories" ng-value="category">{{category.name}}</option>
+            </select>
           </td>
           <td>
             <button ng-hide="editedTodo.id"
@@ -54,9 +56,11 @@
         </tr>
         </tbody>
       </table>
+
       <button ng-click="generatePDF()" class="btn btn-primary">Generate PDF</button>
     </div>
 
 
   </div>
 </form>
+

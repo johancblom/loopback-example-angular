@@ -30,6 +30,8 @@ angular
           $('.focus').focus();
           $scope.getTodos();
         });
+      $scope.findAvailableCategories();
+
     }
     $scope.removeTodo = function(item) {
       Todo
@@ -38,6 +40,8 @@ angular
         .then(function() {
           $scope.getTodos();
         });
+      $scope.findAvailableCategories();
+
     };
 
     $scope.updateTodo = function(item) {

@@ -9,7 +9,8 @@ angular
     'ui.router',
     'ngMessages',
     '720kb.tooltips',
-    'angularLocalStorage'
+    'angularLocalStorage',
+    'ui.materialize'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                                                             $urlRouterProvider) {
